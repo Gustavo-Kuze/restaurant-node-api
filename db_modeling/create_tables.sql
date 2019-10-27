@@ -1,6 +1,6 @@
 
 CREATE TABLE `endereco` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `logradouro` varchar(100) NOT NULL,
   `numero` int(11) NOT NULL,
   `bairro` varchar(50) NOT NULL,
@@ -12,7 +12,7 @@ CREATE TABLE `endereco` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `pessoa` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `nome` varchar(150) NOT NULL,
   `data_nascimento` varchar(25) NOT NULL,
   `cpf` varchar(11) DEFAULT NULL,
@@ -28,7 +28,7 @@ CREATE TABLE `pessoa` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `usuario` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pessoa` int(11) DEFAULT NULL,
   `email` varchar(150) NOT NULL,
   `senha` varchar(150) NOT NULL,
@@ -39,7 +39,7 @@ CREATE TABLE `usuario` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `produto` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `preco` decimal(10,0) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `descricao` varchar(100) DEFAULT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE `produto` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `itemcompra` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_produto` int(11) NOT NULL,
   `quantidade` int(3) NOT NULL,
   PRIMARY KEY (`id`),
@@ -59,7 +59,7 @@ CREATE TABLE `itemcompra` (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `compra` (
-  `id` int(11) NOT NULL,
+  `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_cliente` int(11) NOT NULL,
   `id_garcon` int(11) NOT NULL,
   `id_item_compra` int(11) NOT NULL,

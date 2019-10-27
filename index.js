@@ -4,7 +4,7 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const { authRouter, postsRouter } = require('./routes/');
+const { authRouter, postsRouter, mysqlRouter } = require('./routes/');
 
 dotenv.config();
 
@@ -20,5 +20,6 @@ app.use(express.json());
 
 app.use('/api/user', authRouter);
 app.use('/api/posts', postsRouter);
+app.use('/api/mysql', mysqlRouter);
 
 app.listen(port, () => console.log(`API iniciada na porta: ${port}!`));

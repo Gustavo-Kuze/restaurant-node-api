@@ -16,6 +16,7 @@
         "promise/no-callback-in-promise": "error",
         "promise/no-return-in-finally": "error",
         "prefer-arrow-callback": "error",
-        "linebreak-style": "off"
+        "linebreak-style": "off",
+        "consistent-return": "off"
     }
 }
