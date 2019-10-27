@@ -1,18 +1,11 @@
 const bcjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { validateRegister, validateLogin } = require('../validation');
 const { getUserByEmail } = require('../services/loginService');
 const User = require('../model/User');
 
 const register = async (req, res) => {
-  const validationResults = validateRegister(req.body);
-
-  if (!validationResults.isValid) {
-    res.status(400).send(validationResults.message);
-  }
-
   try {
-    const doesEmailExist = await getUserByEmail({ email: req.body.email });
+    const doesEmailExist = await getUserByEmail(req.body.email);
 
     if (doesEmailExist) {
       return res.status(400).send('E-mail already exists');
@@ -32,16 +25,11 @@ const register = async (req, res) => {
     return res.send(savedUser.id);
   } catch (err) {
     console.log(err);
-    return res.status(400).send('deu ruim');
+    return res.status(400).send(err);
   }
 };
 
 const login = async (req, res) => {
-  const validationResults = validateLogin(req.body);
-
-  if (!validationResults.isValid) {
-    return res.status(400).send(validationResults.message);
-  }
   const user = await getUserByEmail(req.body.email);
 
   if (!user) return res.status(400).send('E-mail not found');
