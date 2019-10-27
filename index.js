@@ -4,21 +4,21 @@ const app = express();
 const port = 3000;
 const mongoose = require('mongoose');
 const dotenv = require('dotenv');
-const authRoute = require('./routes/auth');
-const postsRoute = require('./routes/posts');
+const { authRouter, postsRouter } = require('./routes/');
 
 dotenv.config();
 
-mongoose.connect(
-  process.env.DB_CONNECT,
-  { useNewUrlParser: true },
-  { useUnifiedTopology: true },
-  () => console.log('Connected to DB'),
-).catch((err) => console.error(err));
+mongoose
+  .connect(
+    process.env.DB_CONNECT,
+    { useNewUrlParser: true },
+    { useUnifiedTopology: true },
+  )
+  .catch((err) => console.error(err));
 
 app.use(express.json());
 
-app.use('/api/user', authRoute);
-app.use('/api/posts', postsRoute);
+app.use('/api/user', authRouter);
+app.use('/api/posts', postsRouter);
 
-app.listen(port, () => console.log(`Nossa API está rodando na porta: ${port}!`));
+app.listen(port, () => console.log(`API iniciada na porta: ${port}!`));
