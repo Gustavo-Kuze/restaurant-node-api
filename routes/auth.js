@@ -55,7 +55,7 @@ router.post('/login', async (req, res) => {
 
   // eslint-disable-next-line no-underscore-dangle
   const token = jwt.sign({ id: user._id }, process.env.SECRET);
-  res.header('auto-token', token).send(token);
+  res.header('access_token', token).send(token);
   return res.send('LoggedIn!');
 });
 
