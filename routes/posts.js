@@ -1,7 +1,7 @@
 const router = require('express').Router();
-const authMiddleware = require('../middlewares/authMiddleware');
+const authenticate = require('../middlewares/auth');
 
-router.get('/', authMiddleware, (_, res) => {
+router.get('/', authenticate, (_, res) => {
   res.json({
     posts: {
       title: 'Título do post',

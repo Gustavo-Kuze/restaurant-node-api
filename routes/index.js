@@ -1,9 +1,9 @@
-const authRouter = require('./auth');
+const userRouter = require('./user');
 const postsRouter = require('./posts');
 const mysqlRouter = require('./mysql');
 
 module.exports = {
-  authRouter,
+  userRouter,
   postsRouter,
   mysqlRouter,
 };
