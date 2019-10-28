@@ -34,6 +34,7 @@ CREATE TABLE `usuario` (
   `senha` varchar(150) NOT NULL,
   `tipo_usuario` varchar(15) NOT NULL,
   PRIMARY KEY (`id`),
+  UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `id_pessoa_fk_idx` (`id_pessoa`),
   CONSTRAINT `id_pessoa_fk` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;

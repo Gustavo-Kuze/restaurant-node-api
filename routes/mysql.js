@@ -1,5 +1,6 @@
 const router = require('express').Router();
 const mysql = require('mysql');
+const UsuarioRepository = require('../repository/UserRepository');
 
 router.get('/', (_, res) => {
   const con = mysql.createConnection({
@@ -20,6 +21,12 @@ router.get('/', (_, res) => {
       res.json(result);
     });
   });
+});
+
+router.post('/register', async (req, res) => {
+  const repo = new UsuarioRepository();
+  const result = await repo.register(req.body);
+  res.json(result);
 });
 
 module.exports = router;

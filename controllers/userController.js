@@ -1,7 +1,6 @@
 const bcjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { getUserByEmail } = require('../services/loginService');
-const User = require('../model/User');
 
 const register = async (req, res) => {
   try {

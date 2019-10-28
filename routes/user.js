@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { register, login } = require('../controllers/authController');
+const { register, login } = require('../controllers/userController');
 const validationMiddleware = require('../middlewares/modelValidation');
 
 router.post('/register', validationMiddleware, register);
