@@ -66,6 +66,8 @@ CREATE TABLE `compra` (
   `preco_total` decimal(10,0) NOT NULL,
   `data` varchar(20) NOT NULL,
   `finalizada` int(1) NOT NULL DEFAULT '0',
+  `codigo_comanda` varchar(50) DEFAULT NULL,
+  `cancelada` int(1) NOT NULL DEFAULT '0',
   UNIQUE KEY `idCompra_UNIQUE` (`id`),
   KEY `id_cliente_fk_idx` (`id_cliente`),
   KEY `id_garcon_fk_idx` (`id_garcon`),
@@ -74,4 +76,3 @@ CREATE TABLE `compra` (
   CONSTRAINT `id_garcon_fk` FOREIGN KEY (`id_garcon`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `id_item_compra_fk` FOREIGN KEY (`id_item_compra`) REFERENCES `itemcompra` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-

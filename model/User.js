@@ -1,28 +1,31 @@
-const mongoose = require('mongoose');
+const joi = require('@hapi/joi');
 
-const userSchema = new mongoose.Schema({
-  name: {
-    type: 'string',
-    required: true,
-    min: 6,
-    max: 255,
-  },
-  email: {
-    type: 'string',
-    required: true,
-    min: 6,
-    max: 255,
-  },
-  password: {
-    type: 'string',
-    required: true,
-    min: 6,
-    max: 1024,
-  },
-  date: {
-    type: 'date',
-    default: Date.now(),
-  },
+const register = joi.object({
+  name: joi
+    .string()
+    .min(6)
+    .required(),
+  email: joi
+    .string()
+    .min(6)
+    .required()
+    .email(),
+  password: joi
+    .string()
+    .min(6)
+    .required(),
 });
 
-module.exports = mongoose.model('User', userSchema);
+const login = joi.object({
+  email: joi
+    .string()
+    .min(6)
+    .required()
+    .email(),
+  password: joi
+    .string()
+    .min(6)
+    .required(),
+});
+
+module.exports = { register, login };

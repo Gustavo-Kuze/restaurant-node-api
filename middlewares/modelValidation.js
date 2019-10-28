@@ -1,5 +1,5 @@
 /* eslint-disable consistent-return */
-const schemas = require('../modelValidationSchemas/user');
+const schemas = require('../model/user');
 
 const getSchemaName = (url) => {
   switch (url) {

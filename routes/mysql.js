@@ -15,7 +15,7 @@ router.get('/', (_, res) => {
       if (error) {
         return res
           .status(400)
-          .send('Ocorreu um erro ao obter os dados: ' + error);
+          .send(`Ocorreu um erro ao obter os dados: ${error}`);
       }
       res.json(result);
     });
