@@ -1,24 +1,41 @@
 const BaseRepository = require('./BaseRepository');
 
 class UserRepository extends BaseRepository {
+  constructor(errorCallback) {
+    super();
+
+    this.connection.connect((err) => {
+      if (err && typeof errorCallback === 'function') errorCallback();
+    });
+  }
+
   register(user) {
     return new Promise((resolve, reject) => {
       const query = `INSERT INTO usuario (email, senha, tipo_usuario) VALUES ('${user.email}', '${user.senha}', '${user.tipoUsuario}');`;
 
-      this.connection.connect((err) => {
-        if (err) {
-          return reject(new Error('Ocorreu um erro ao conectar'));
+      this.connection.query(query, (error, result) => {
+        if (error) {
+          return reject(
+            new Error(`Ocorreu um erro ao obter os dados: ${error}`),
+          );
         }
-        this.connection.query(query, (error, result) => {
-          if (error) {
-            return reject(
-              new Error(
-                `Ocorreu um erro ao obter os dados: ${error}`,
-              ),
-            );
-          }
-          return resolve(result);
-        });
+        return resolve(result.insertId);
+      });
+    });
+  }
+
+  isEmailRegistered(email) {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT * FROM usuario WHERE email = '${email}'`;
+
+      this.connection.query(query, (error, result) => {
+        if (error) {
+          return reject(
+            new Error(`Ocorreu um erro ao obter os dados: ${error}`),
+          );
+        }
+
+        return resolve(result && result.length > 0);
       });
     });
   }

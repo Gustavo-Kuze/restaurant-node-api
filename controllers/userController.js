@@ -1,10 +1,12 @@
 const bcjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const { getUserByEmail } = require('../services/loginService');
+const UsuarioRepository = require('../repository/UserRepository');
 
 const register = async (req, res) => {
   try {
-    const doesEmailExist = await getUserByEmail(req.body.email);
+    const repo = new UsuarioRepository();
+    const doesEmailExist = await repo.isEmailRegistered(req.body.email);
 
     if (doesEmailExist) {
       return res.status(400).send('E-mail already exists');
@@ -14,14 +16,12 @@ const register = async (req, res) => {
     const salt = await bcjs.genSalt(10);
     const hashedPwd = await bcjs.hash(req.body.password, salt);
 
-    const user = new User({
-      name: req.body.name,
-      email: req.body.email,
+    const result = await repo.register({
+      ...req.body,
       password: hashedPwd,
     });
 
-    const savedUser = await user.save();
-    return res.send(savedUser.id);
+    return res.json({ id: result });
   } catch (err) {
     console.log(err);
     return res.status(400).send(err);

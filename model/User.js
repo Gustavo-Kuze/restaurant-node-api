@@ -1,9 +1,9 @@
 const joi = require('@hapi/joi');
 
 const register = joi.object({
-  name: joi
+  tipoUsuario: joi
     .string()
-    .min(6)
+    .min(5)
     .required(),
   email: joi
     .string()
