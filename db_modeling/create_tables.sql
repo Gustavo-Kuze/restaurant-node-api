@@ -1,3 +1,4 @@
+CREATE DATABASE `restaurante` /*!40100 DEFAULT CHARACTER SET latin1 */;
 
 CREATE TABLE `endereco` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
