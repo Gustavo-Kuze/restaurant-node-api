@@ -5,7 +5,7 @@ const UsuarioRepository = require('../repository/UserRepository');
 
 const register = async (req, res) => {
   try {
-    const repo = new UsuarioRepository();
+    const repo = new UsuarioRepository((err) => res.status(400).send(err));
     const doesEmailExist = await repo.isEmailRegistered(req.body.email);
 
     if (doesEmailExist) {

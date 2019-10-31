@@ -5,7 +5,7 @@ class UserRepository extends BaseRepository {
     super();
 
     this.connection.connect((err) => {
-      if (err && typeof errorCallback === 'function') errorCallback();
+      if (err && typeof errorCallback === 'function') errorCallback(err);
     });
   }
 
@@ -16,7 +16,9 @@ class UserRepository extends BaseRepository {
       this.connection.query(query, (error, result) => {
         if (error) {
           return reject(
-            new Error(`Ocorreu um erro ao obter os dados: ${error}`),
+            new Error(
+              `Ocorreu um erro ao gravar os dados: ${error}`,
+            ),
           );
         }
         return resolve(result.insertId);

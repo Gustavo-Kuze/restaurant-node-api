@@ -11,6 +11,6 @@ module.exports = (req, res, next) => {
     req.user = authenticated;
     next();
   } catch (err) {
-    return res.status(400).send('O token de acesso era inválido');
+    return res.status(400).send('O token de acesso é inválido');
   }
 };
