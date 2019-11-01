@@ -9,6 +9,7 @@ const {
   postsRouter,
   mysqlRouter,
   addressRouter,
+  personRouter,
 } = require('./routes/');
 
 dotenv.config();
@@ -27,5 +28,6 @@ app.use('/api/usuario', userRouter);
 app.use('/api/posts', postsRouter);
 app.use('/api/mysql', mysqlRouter);
 app.use('/api/endereco', addressRouter);
+app.use('/api/informacoes-pessoais', personRouter);
 
 app.listen(port, () => console.log(`API iniciada na porta: ${port}!`));
