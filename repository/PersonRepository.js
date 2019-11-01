@@ -1,6 +1,6 @@
 const BaseRepository = require('./BaseRepository');
 
-class AddressRepository extends BaseRepository {
+class PersonRepository extends BaseRepository {
   constructor(errorCallback) {
     super();
 
@@ -9,9 +9,16 @@ class AddressRepository extends BaseRepository {
     });
   }
 
-  create(address) {
+  create(person) {
     return new Promise((resolve, reject) => {
-      const query = `INSERT INTO endereco (logradouro, numero, bairro, complemento, cidade, uf) VALUES ('${address.logradouro}', '${address.numero}', '${address.bairro}', '${address.complemento}', '${address.cidade}', '${address.uf}');`;
+      const query = `INSERT INTO pessoa (nome, data_nascimento, cpf, rg, telefone1, telefone2, id_endereco, estado_civil) VALUES ('${
+        person.nome
+      }', '${person.dataNascimento}', '${person.cpf
+                || null}', '${person.rg || null}', '${
+        person.telefone1
+      }', '${person.telefone2 || null}', '${person.idEndereco}', '${
+        person.estadoCivil
+      }');`;
 
       this.connection.query(query, (error, result) => {
         if (error) {
@@ -28,7 +35,7 @@ class AddressRepository extends BaseRepository {
 
   getById(id) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT * FROM endereco WHERE id = ${id};`;
+      const query = `SELECT * FROM pessoa WHERE id = ${id};`;
 
       this.connection.query(query, (error, result) => {
         if (error) {
@@ -41,15 +48,20 @@ class AddressRepository extends BaseRepository {
     });
   }
 
-  update(address) {
+  update(person) {
     return new Promise((resolve, reject) => {
-      const query = `UPDATE endereco SET logradouro = '${
-        address.logradouro
-      }', numero = ${address.numero}, bairro = '${
-        address.bairro
-      }', complemento = '${address.complemento || null}', cidade = '${
-        address.cidade
-      }', uf = '${address.uf}' WHERE id = ${address.id};`;
+      const query = `UPDATE pessoa SET nome = '${
+        person.nome
+      }', data_nascimento = '${
+        person.dataNascimento
+      }', cpf = '${person.cpf || null}', rg = '${person.rg
+                || null}', telefone1 = '${
+        person.telefone1
+      }', telefone2 = '${person.telefone2 || null}', id_endereco = '${
+        person.idEndereco
+      }', estado_civil = '${person.estadoCivil}' WHERE id = ${
+        person.id
+      };`;
 
       this.connection.query(query, (error, result) => {
         if (error) {
@@ -65,4 +77,4 @@ class AddressRepository extends BaseRepository {
   }
 }
 
-module.exports = AddressRepository;
+module.exports = PersonRepository;
