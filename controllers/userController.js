@@ -13,11 +13,11 @@ const register = async (req, res) => {
 
     // password hasing
     const salt = await bcjs.genSalt(10);
-    const hashedPwd = await bcjs.hash(req.body.password, salt);
+    const hashedPwd = await bcjs.hash(req.body.senha, salt);
 
     const result = await repo.register({
       ...req.body,
-      password: hashedPwd,
+      senha: hashedPwd,
     });
 
     return res.json({ id: result });
@@ -36,13 +36,12 @@ const login = async (req, res) => {
   }
   console.log(user);
 
-  const isPasswordValid = await bcjs.compare(req.body.password, user.senha);
-  if (!isPasswordValid) return res.status(400).send('Incorrect password');
+  const isPasswordValid = await bcjs.compare(req.body.senha, user.senha);
+  if (!isPasswordValid) {return res.status(400).send("E-mail ou senha incorretos");}
 
   // eslint-disable-next-line no-underscore-dangle
   const token = jwt.sign({ id: user._id }, process.env.SECRET);
-  res.header('access_token', token).send(token);
-  return res.send('LoggedIn!');
+  return res.header('access_token', token).send(token);
 };
 
 module.exports = {

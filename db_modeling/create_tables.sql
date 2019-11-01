@@ -32,7 +32,7 @@ CREATE TABLE `usuario` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_pessoa` int(11) DEFAULT NULL,
   `email` varchar(150) NOT NULL,
-  `password` varchar(150) NOT NULL,
+  `senha` varchar(150) NOT NULL,
   `tipo_usuario` varchar(15) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
