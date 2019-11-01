@@ -47,7 +47,7 @@ class AddressRepository extends BaseRepository {
         address.logradouro
       }', numero = ${address.numero}, bairro = '${
         address.bairro
-      }', complemento = '${address.complemento || null}', cidade = '${
+      }', complemento = '${address.complemento || ''}', cidade = '${
         address.cidade
       }', uf = '${address.uf}' WHERE id = ${address.id};`;
 

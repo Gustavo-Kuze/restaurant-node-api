@@ -14,9 +14,9 @@ class PersonRepository extends BaseRepository {
       const query = `INSERT INTO pessoa (nome, data_nascimento, cpf, rg, telefone1, telefone2, id_endereco, estado_civil) VALUES ('${
         person.nome
       }', '${person.dataNascimento}', '${person.cpf
-                || null}', '${person.rg || null}', '${
+                || ''}', '${person.rg || ''}', '${
         person.telefone1
-      }', '${person.telefone2 || null}', '${person.idEndereco}', '${
+      }', '${person.telefone2 || ''}', '${person.idEndereco}', '${
         person.estadoCivil
       }');`;
 
@@ -54,10 +54,10 @@ class PersonRepository extends BaseRepository {
         person.nome
       }', data_nascimento = '${
         person.dataNascimento
-      }', cpf = '${person.cpf || null}', rg = '${person.rg
-                || null}', telefone1 = '${
+      }', cpf = '${person.cpf || ''}', rg = '${person.rg
+                || ''}', telefone1 = '${
         person.telefone1
-      }', telefone2 = '${person.telefone2 || null}', id_endereco = '${
+      }', telefone2 = '${person.telefone2 || ''}', id_endereco = '${
         person.idEndereco
       }', estado_civil = '${person.estadoCivil}' WHERE id = ${
         person.id
