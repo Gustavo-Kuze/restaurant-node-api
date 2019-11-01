@@ -33,9 +33,7 @@ class AddressRepository extends BaseRepository {
       this.connection.query(query, (error, result) => {
         if (error) {
           return reject(
-            new Error(
-              `Ocorreu um erro ao gravar os dados: ${error}`,
-            ),
+            new Error(`Ocorreu um erro ao obter os dados: ${error}`),
           );
         }
         return resolve(result);
@@ -45,7 +43,7 @@ class AddressRepository extends BaseRepository {
 
   update(address) {
     return new Promise((resolve, reject) => {
-      const query = `UPDATE endereco SET logradouro = ${address.logradouro}, numero = ${address.numero}, bairro = ${address.bairro}, complemento = ${address.complemento}, cidade = ${address.cidade}, uf = ${address.uf} WHERE id = ${address.id};`;
+      const query = `UPDATE endereco SET logradouro = '${address.logradouro}', numero = ${address.numero}, bairro = '${address.bairro}', complemento = '${address.complemento}', cidade = '${address.cidade}', uf = '${address.uf}' WHERE id = ${address.id};`;
 
       this.connection.query(query, (error, result) => {
         if (error) {

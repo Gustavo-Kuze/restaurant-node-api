@@ -11,7 +11,7 @@ class UserRepository extends BaseRepository {
 
   register(user) {
     return new Promise((resolve, reject) => {
-      const query = `INSERT INTO usuario (email, senha, tipo_usuario) VALUES ('${user.email}', '${user.senha}', '${user.tipoUsuario}');`;
+      const query = `INSERT INTO usuario (email, senha, tipo_usuario) VALUES ('${user.email}', '${user.password}', '${user.tipoUsuario}');`;
 
       this.connection.query(query, (error, result) => {
         if (error) {
@@ -22,6 +22,22 @@ class UserRepository extends BaseRepository {
           );
         }
         return resolve(result.insertId);
+      });
+    });
+  }
+
+  getUserByEmail(email) {
+    return new Promise((resolve, reject) => {
+      const query = `SELECT * FROM usuario WHERE email = '${email}'`;
+
+      this.connection.query(query, (error, result) => {
+        if (error) {
+          return reject(
+            new Error(`Ocorreu um erro ao obter os dados: ${error}`),
+          );
+        }
+
+        return resolve(result && result[0]);
       });
     });
   }

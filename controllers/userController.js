@@ -1,6 +1,5 @@
 const bcjs = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const { getUserByEmail } = require('../services/loginService');
 const UsuarioRepository = require('../repository/UserRepository');
 
 const register = async (req, res) => {
@@ -29,14 +28,15 @@ const register = async (req, res) => {
 };
 
 const login = async (req, res) => {
-  const user = await getUserByEmail(req.body.email);
+  const repo = new UsuarioRepository((err) => res.status(400).send(err));
+  const user = await repo.getUserByEmail(req.body.email);
 
-  if (!user) return res.status(400).send('E-mail not found');
+  if (!user) {
+    return res.status(400).send('E-mail não encontrado');
+  }
+  console.log(user);
 
-  const isPasswordValid = await bcjs.compare(
-    req.body.password,
-    user.password,
-  );
+  const isPasswordValid = await bcjs.compare(req.body.password, user.senha);
   if (!isPasswordValid) return res.status(400).send('Incorrect password');
 
   // eslint-disable-next-line no-underscore-dangle

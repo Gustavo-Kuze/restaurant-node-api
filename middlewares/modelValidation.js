@@ -1,16 +1,5 @@
 /* eslint-disable consistent-return */
-const schemas = require('../model/user');
-
-const getSchemaName = (url) => {
-  switch (url) {
-    case '/register':
-      return 'register';
-    case '/login':
-      return 'login';
-    default:
-      return '';
-  }
-};
+const getModel = require('../model/');
 
 const validate = (data, schema) => {
   const validationReturn = { isValid: true, message: 'OK' };
@@ -22,14 +11,20 @@ const validate = (data, schema) => {
   return validationReturn;
 };
 
-const middleware = (req, res, next) => {
-  const schemaName = getSchemaName(req.url);
-  const validationResults = validate(req.body, schemas[schemaName]);
+const modelValidationMiddleware = (req, res, next) => {
+  try {
+    const validationResults = validate(
+      req.body,
+      getModel(req.baseUrl + req.url),
+    );
 
-  if (!validationResults.isValid) {
-    return res.status(400).send(validationResults.message);
+    if (!validationResults.isValid) {
+      return res.status(400).send(validationResults.message);
+    }
+    next();
+  } catch (error) {
+    return res.status(400).send(error);
   }
-  next();
 };
 
-module.exports = middleware;
+module.exports = modelValidationMiddleware;
