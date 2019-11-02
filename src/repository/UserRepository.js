@@ -63,7 +63,7 @@ class UserRepository extends BaseRepository {
 
   deleteUser(id) {
     return new Promise((resolve, reject) => {
-      const query = 'DELETE FROM usuario WHERE id = ?';
+      const query = 'UPDATE usuario SET desabilitado = 1 WHERE id = ?';
 
       this.connection.query(query, [id], (error, result) => {
         if (error) {

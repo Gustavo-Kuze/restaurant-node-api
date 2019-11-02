@@ -34,12 +34,12 @@ CREATE TABLE `usuario` (
   `email` varchar(150) NOT NULL,
   `senha` varchar(150) NOT NULL,
   `tipo_usuario` varchar(15) NOT NULL,
-  `excluido` int(1) DEFAULT '0',
+  `desabilitado` int(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `id_pessoa_fk_idx` (`id_pessoa`),
   CONSTRAINT `id_pessoa_fk` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE `produto` (
@@ -48,9 +48,11 @@ CREATE TABLE `produto` (
   `nome` varchar(45) NOT NULL,
   `descricao` varchar(100) DEFAULT NULL,
   `tamanho` varchar(10) DEFAULT NULL,
+  `desabilitado` int(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `idProduto_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
 
 CREATE TABLE `itemcompra` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
