@@ -34,11 +34,13 @@ CREATE TABLE `usuario` (
   `email` varchar(150) NOT NULL,
   `senha` varchar(150) NOT NULL,
   `tipo_usuario` varchar(15) NOT NULL,
+  `excluido` int(1) DEFAULT '0',
   PRIMARY KEY (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`),
   KEY `id_pessoa_fk_idx` (`id_pessoa`),
   CONSTRAINT `id_pessoa_fk` FOREIGN KEY (`id_pessoa`) REFERENCES `pessoa` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=18 DEFAULT CHARSET=latin1;
+
 
 CREATE TABLE `produto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,

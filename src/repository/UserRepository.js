@@ -11,26 +11,29 @@ class UserRepository extends BaseRepository {
 
   register(user) {
     return new Promise((resolve, reject) => {
-      const query = `INSERT INTO usuario (email, senha, tipo_usuario) VALUES ('${user.email}', '${user.senha}', '${user.tipoUsuario}');`;
+      const query =
+        'INSERT INTO usuario (email, senha, tipo_usuario) VALUES (?, ?, ?);';
 
-      this.connection.query(query, (error, result) => {
-        if (error) {
-          return reject(
-            new Error(
-              `Ocorreu um erro ao gravar os dados: ${error}`,
-            ),
-          );
-        }
-        return resolve(result.insertId);
-      });
+      this.connection.query(
+        query,
+        [user.email, user.senha, user.tipoUsuario],
+        (error, result) => {
+          if (error) {
+            return reject(
+              new Error(`Ocorreu um erro ao gravar os dados: ${error}`),
+            );
+          }
+          return resolve(result.insertId);
+        },
+      );
     });
   }
 
   getUserByEmail(email) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT * FROM usuario WHERE email = '${email}'`;
+      const query = 'SELECT * FROM usuario WHERE email = ?';
 
-      this.connection.query(query, (error, result) => {
+      this.connection.query(query, [email], (error, result) => {
         if (error) {
           return reject(
             new Error(`Ocorreu um erro ao obter os dados: ${error}`),
@@ -44,12 +47,28 @@ class UserRepository extends BaseRepository {
 
   isEmailRegistered(email) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT * FROM usuario WHERE email = '${email}'`;
+      const query = 'SELECT * FROM usuario WHERE email = ?';
 
-      this.connection.query(query, (error, result) => {
+      this.connection.query(query, [email], (error, result) => {
         if (error) {
           return reject(
             new Error(`Ocorreu um erro ao obter os dados: ${error}`),
+          );
+        }
+
+        return resolve(result && result.length > 0);
+      });
+    });
+  }
+
+  delete(id) {
+    return new Promise((resolve, reject) => {
+      const query = 'DELETE FROM usuario WHERE id = ?';
+
+      this.connection.query(query, [id], (error, result) => {
+        if (error) {
+          return reject(
+            new Error(`Ocorreu um erro ao excluir os dados: ${error}`),
           );
         }
 

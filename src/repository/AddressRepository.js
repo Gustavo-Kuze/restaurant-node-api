@@ -11,26 +11,37 @@ class AddressRepository extends BaseRepository {
 
   create(address) {
     return new Promise((resolve, reject) => {
-      const query = `INSERT INTO endereco (logradouro, numero, bairro, complemento, cidade, uf) VALUES ('${address.logradouro}', '${address.numero}', '${address.bairro}', '${address.complemento}', '${address.cidade}', '${address.uf}');`;
+      const query =
+        // eslint-disable-next-line max-len
+        'INSERT INTO endereco (logradouro, numero, bairro, complemento, cidade, uf) VALUES (?, ?, ?, ?, ?, ?);';
 
-      this.connection.query(query, (error, result) => {
-        if (error) {
-          return reject(
-            new Error(
-              `Ocorreu um erro ao gravar os dados: ${error}`,
-            ),
-          );
-        }
-        return resolve(result.insertId);
-      });
+      this.connection.query(
+        query,
+        [
+          address.logradouro,
+          address.numero,
+          address.bairro,
+          address.complemento,
+          address.cidade,
+          address.uf,
+        ],
+        (error, result) => {
+          if (error) {
+            return reject(
+              new Error(`Ocorreu um erro ao gravar os dados: ${error}`),
+            );
+          }
+          return resolve(result.insertId);
+        },
+      );
     });
   }
 
   getById(id) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT * FROM endereco WHERE id = ${id};`;
+      const query = 'SELECT * FROM endereco WHERE id = ?;';
 
-      this.connection.query(query, (error, result) => {
+      this.connection.query(query, [id], (error, result) => {
         if (error) {
           return reject(
             new Error(`Ocorreu um erro ao obter os dados: ${error}`),
@@ -43,24 +54,30 @@ class AddressRepository extends BaseRepository {
 
   update(address) {
     return new Promise((resolve, reject) => {
-      const query = `UPDATE endereco SET logradouro = '${
-        address.logradouro
-      }', numero = ${address.numero}, bairro = '${
-        address.bairro
-      }', complemento = '${address.complemento || ''}', cidade = '${
-        address.cidade
-      }', uf = '${address.uf}' WHERE id = ${address.id};`;
+      const query =
+        // eslint-disable-next-line max-len
+        'UPDATE endereco SET logradouro = ?, numero = ?, bairro = ?, complemento = ?, cidade = ?, uf = ? WHERE id = ?;';
 
-      this.connection.query(query, (error, result) => {
-        if (error) {
-          return reject(
-            new Error(
-              `Ocorreu um erro ao gravar os dados: ${error}`,
-            ),
-          );
-        }
-        return resolve(result);
-      });
+      this.connection.query(
+        query,
+        [
+          address.logradouro,
+          address.numero,
+          address.bairro,
+          address.complemento,
+          address.cidade,
+          address.uf,
+          address.id,
+        ],
+        (error, result) => {
+          if (error) {
+            return reject(
+              new Error(`Ocorreu um erro ao gravar os dados: ${error}`),
+            );
+          }
+          return resolve(result);
+        },
+      );
     });
   }
 }
