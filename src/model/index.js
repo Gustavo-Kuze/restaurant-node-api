@@ -2,6 +2,7 @@ const userModels = require('./user');
 const addressModels = require('./address');
 const personModels = require('./person');
 const productModels = require('./product');
+const orderModels = require('./order');
 
 const getModel = (url) => {
   if (url.includes('/api/usuario/registrar')) return userModels.register;
@@ -14,6 +15,12 @@ const getModel = (url) => {
   }
   if (url.includes('/api/produto')) {
     return productModels.createOrUpdateProduct;
+  }
+  if (url.includes('/api/compra')) {
+    return orderModels.create;
+  }
+  if (url.includes('/api/compra/adicionar-item')) {
+    return orderModels.addItem;
   }
   return '';
 };

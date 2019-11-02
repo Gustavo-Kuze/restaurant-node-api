@@ -47,21 +47,6 @@ class OrderRepository extends BaseRepository {
       return error;
     }
   }
-
-  // getById(id) {
-  //   return new Promise((resolve, reject) => {
-  //     const query = 'SELECT * FROM compra WHERE id = ?;';
-
-  //     this.connection.query(query, [id], (error, result) => {
-  //       if (error) {
-  //         return reject(
-  //           new Error(`Ocorreu um erro ao obter os dados: ${error}`),
-  //         );
-  //       }
-  //       return resolve(result);
-  //     });
-  //   });
-  // }
 }
 
 module.exports = OrderRepository;

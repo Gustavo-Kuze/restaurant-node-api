@@ -9,6 +9,7 @@ const {
   addressRouter,
   personRouter,
   productRouter,
+  orderRouter,
 } = require('./src/routes/');
 
 dotenv.config();
@@ -20,5 +21,6 @@ app.use('/api/posts', postsRouter);
 app.use('/api/endereco', addressRouter);
 app.use('/api/produto', productRouter);
 app.use('/api/informacoes-pessoais', personRouter);
+app.use('/api/compra', orderRouter);
 
 app.listen(port, () => console.log(`API iniciada na porta: ${port}!`));
