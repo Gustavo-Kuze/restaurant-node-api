@@ -65,6 +65,42 @@ class OrderRepository extends BaseRepository {
       return Promise.reject(new Error(error));
     }
   }
+
+  async deleteItem(orderItem) {
+    try {
+      const query = 'DELETE FROM itemcompra WHERE id = ?';
+
+      const result = await this.query(query, [orderItem.id]);
+
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
+
+  async deleteAllItems(idCompra) {
+    try {
+      const query = 'DELETE FROM itemcompra WHERE idCompra = ?';
+
+      const result = await this.query(query, [idCompra]);
+
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
+
+  async finishOrder(order) {
+    try {
+      const query = 'UPDATE compra SET estado = ? WHERE id = ?';
+
+      const result = await this.query(query, [order.estado, order.id]);
+
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
 }
 
 module.exports = OrderRepository;

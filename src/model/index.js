@@ -4,7 +4,7 @@ const personModels = require('./person');
 const productModels = require('./product');
 const orderModels = require('./order');
 
-const getModel = (url) => {
+const getModel = url => {
   if (url.includes('/api/usuario/registrar')) return userModels.register;
   if (url.includes('/api/usuario/login')) return userModels.login;
   if (url.includes('/api/endereco')) {
@@ -21,6 +21,9 @@ const getModel = (url) => {
   }
   if (url.includes('/api/compra/atualizar-quantidade')) {
     return orderModels.updateQuantity;
+  }
+  if (url.includes('/api/finalizar')) {
+    return orderModels.finishOrder;
   }
   if (url.includes('/api/compra')) {
     return orderModels.create;

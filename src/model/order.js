@@ -23,4 +23,14 @@ const addItem = joi.object({
   quantidade: joi.number().required(),
 });
 
-module.exports = { create, addItem, updateQuantity };
+const finishOrder = joi.object({
+  id: joi.number().required(),
+  estado: joi.string().required(),
+});
+
+module.exports = {
+  create,
+  addItem,
+  updateQuantity,
+  finishOrder,
+};

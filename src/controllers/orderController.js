@@ -52,9 +52,51 @@ const getTotal = async (req, res) => {
   }
 };
 
+const deleteItem = async (req, res) => {
+  try {
+    const repo = new OrderRepository((err) => res.status(400).send(err));
+
+    const result = await repo.deleteItem(req.params.id);
+
+    return res.json(result);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send(err);
+  }
+};
+
+const deleteAllItems = async (req, res) => {
+  try {
+    const repo = new OrderRepository((err) => res.status(400).send(err));
+
+    const result = await repo.deleteAllItems(req.params.id);
+
+    return res.json(result);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send(err);
+  }
+};
+
+const finishOrder = async (req, res) => {
+  try {
+    const repo = new OrderRepository((err) => res.status(400).send(err));
+
+    const result = await repo.finishOrder(req.body);
+
+    return res.json(result);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send(err);
+  }
+};
+
 module.exports = {
   create,
   addItem,
   getTotal,
   updateItemQuantity,
+  deleteItem,
+  deleteAllItems,
+  finishOrder,
 };
