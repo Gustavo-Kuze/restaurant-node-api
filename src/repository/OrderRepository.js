@@ -66,6 +66,18 @@ class OrderRepository extends BaseRepository {
     }
   }
 
+  async listItems(idCompra) {
+    try {
+      const query = 'SELECT * FROM itemcompra;';
+
+      const result = await this.query(query, [idCompra]);
+
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
+
   async deleteItem(id) {
     try {
       const query = 'DELETE FROM itemcompra WHERE id = ?';

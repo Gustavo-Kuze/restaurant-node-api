@@ -7,11 +7,13 @@ const {
   deleteItem,
   deleteAllItems,
   finishOrder,
+  listItems,
 } = require('../controllers/orderController');
 const validate = require('../middlewares/modelValidation');
 const authenticate = require('../middlewares/auth');
 
 router.post('/', authenticate, validate, create);
+router.get('/', authenticate, listItems);
 router.get('/total/:id', authenticate, getTotal);
 router.delete('/excluir-item/:id', authenticate, deleteItem);
 router.delete('/excluir-todos/:id', authenticate, deleteAllItems);

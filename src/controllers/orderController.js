@@ -52,6 +52,19 @@ const getTotal = async (req, res) => {
   }
 };
 
+const listItems = async (req, res) => {
+  try {
+    const repo = new OrderRepository((err) => res.status(400).send(err));
+
+    const result = await repo.listItems(req.params.id);
+
+    return res.json(result);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send(err);
+  }
+};
+
 const deleteItem = async (req, res) => {
   try {
     const repo = new OrderRepository((err) => res.status(400).send(err));
@@ -99,4 +112,5 @@ module.exports = {
   deleteItem,
   deleteAllItems,
   finishOrder,
+  listItems,
 };

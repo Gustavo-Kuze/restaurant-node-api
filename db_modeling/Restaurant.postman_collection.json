@@ -1,0 +1,1016 @@
+{
+	"info": {
+		"_postman_id": "d4bd92b6-6bb9-4ba2-a713-553423039058",
+		"name": "Restaurant",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "usuario",
+			"item": [
+				{
+					"name": "LOGIN",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"email\": \"tes2te@teste.com\",\n\t\"senha\": \"123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/usuario/login",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "REGISTRAR",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"tipoUsuario\": \"admin\",\n\t\"email\": \"teste@teste2.com\",\n\t\"senha\": \"123123\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/usuario/registrar",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"registrar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EXCLUIR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/usuario/excluir/24",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"excluir",
+								"24"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "endereco",
+			"item": [
+				{
+					"name": "CADASTRAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"logradouro\": \"Rua da Conceição\",\n\t\"numero\": 23,\n\t\"bairro\": \"centro\",\n\t\"cidade\": \"Carlos Barbosa\",\n\t\"uf\": \"RS\",\n\t\"complemento\": \"Ao lado do mercadinho\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/endereco",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"endereco"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"logradouro\": \"Rua da Conceição\",\n\t\"numero\": 23,\n\t\"bairro\": \"centro\",\n\t\"cidade\": \"Carlos Barbosa\",\n\t\"uf\": \"RS\",\n\t\"complemento\": \"Ao lado do mercadinho\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/endereco/2",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"endereco",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OBTER POR ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/endereco/2",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"endereco",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "produto",
+			"item": [
+				{
+					"name": "OBTER POR ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/produto/2",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"produto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OBTER HABILITADOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/produto/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"produto",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OBTER TODOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/produto/todos",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"produto",
+								"todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n        \"preco\": 12.23,\r\n        \"nome\": \"Pastel de queijo\",\r\n        \"descricao\": \"Sabor 4 queijos\",\r\n        \"tamanho\": \"grande\"\r\n    }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/produto/2",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"produto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CADASTRAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"preco\": 13.23,\n\t\"nome\": \"Pastel Strogonoff de Frango\",\n\t\"descricao\": \"Cebola, Alho, Molho branco, molho de tomate\",\n\t\"tamanho\": \"grande\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/produto",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"produto"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EXCLUIR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/produto/2",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"produto",
+								"2"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "compra",
+			"item": [
+				{
+					"name": "ADICIONAR ITEM",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idCompra\": 12,\n\t\"idProduto\": 3,\n\t\"quantidade\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/compra/adicionar-item",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"compra",
+								"adicionar-item"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR QUANTIDADE",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 12,\n\t\"quantidade\": 233\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/compra/atualizar-quantidade",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"compra",
+								"atualizar-quantidade"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALTERAR ESTADO DA COMPRA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"id\": 12,\n\t\"estado\": \"finalizada\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/compra/finalizar",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"compra",
+								"finalizar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OBTER SOMA TOTAL",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idCompra\": 12,\n\t\"idProduto\": 3,\n\t\"quantidade\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/compra/total/12",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"compra",
+								"total",
+								"12"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "LISTAR ITENS",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idCompra\": 12,\n\t\"idProduto\": 3,\n\t\"quantidade\": 1\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/compra/",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"compra",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "CRIAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"idGarcon\": 11,\n\t\"data\": \"30/02/2019\",\n\t\"codigoComanda\": \"99382ASD\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/compra",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"compra"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EXCLUIR ITEM",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/compra/excluir-item/4",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"compra",
+								"excluir-item",
+								"4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "EXCLUIR TODOS OS ITENS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/compra/excluir-todos/12",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"compra",
+								"excluir-todos",
+								"12"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "pessoa",
+			"item": [
+				{
+					"name": "CADASTRAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Fulano dos Santos\",\n\t\"dataNascimento\": \"30/03/1998\",\n\t\"cpf\": \"02399288393\",\n\t\"telefone1\": \"51999292828\",\n\t\"estadoCivil\": \"solteiro\",\n\t\"idEndereco\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/informacoes-pessoais",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"informacoes-pessoais"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OBTER POR ID",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/informacoes-pessoais/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"informacoes-pessoais",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"nome\": \"Fulano dos Santos\",\n\t\"dataNascimento\": \"30/03/1998\",\n\t\"cpf\": \"02399288393\",\n\t\"telefone1\": \"51999292828\",\n\t\"telefone2\": \"11999292823\",\n\t\"estadoCivil\": \"casado\",\n\t\"idEndereco\": 3\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{HOST}}/api/informacoes-pessoais/1",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"informacoes-pessoais",
+								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"id": "6b34cc61-1383-4e59-90a6-eea48e123e0b",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"id": "475d0ade-9eca-49ed-b077-d13619912825",
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"id": "6b34a010-216d-4b32-b8f1-8b1388ddf944",
+			"key": "HOST",
+			"value": "http://localhost:5203",
+			"type": "string"
+		},
+		{
+			"id": "c09cc222-dfd9-4f93-adf4-1790c9376609",
+			"key": "TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpYXQiOjE1NzI2NDA1NTd9.AWEyQ0gah9Pwno_-CFwv6Msi_x7HiPLQ2McXG5LraA0",
+			"type": "string"
+		}
+	],
+	"protocolProfileBehavior": {}
+}
