@@ -39,8 +39,21 @@ const update = async (req, res) => {
   }
 };
 
+const deletePerson = async (req, res) => {
+  try {
+    const repo = new PersonRepository((err) => res.status(400).send(err));
+    repo.deletePerson(req.params.id);
+    return res.json({
+      ok: true,
+    });
+  } catch (error) {
+    return res.status(400).send('Ocorreu um erro ao tentar excluir a pessoa');
+  }
+};
+
 module.exports = {
   create,
   getById,
   update,
+  deletePerson,
 };

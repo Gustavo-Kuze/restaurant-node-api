@@ -83,6 +83,22 @@ class PersonRepository extends BaseRepository {
       );
     });
   }
+
+  deletePerson(id) {
+    return new Promise((resolve, reject) => {
+      const query = 'DELETE FROM pessoa WHERE id = ?';
+
+      this.connection.query(query, [id], (error, result) => {
+        if (error) {
+          return reject(
+            new Error(`Ocorreu um erro ao excluir os dados: ${error}`),
+          );
+        }
+
+        return resolve(result && result.length > 0);
+      });
+    });
+  }
 }
 
 module.exports = PersonRepository;

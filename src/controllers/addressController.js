@@ -39,8 +39,21 @@ const update = async (req, res) => {
   }
 };
 
+const deleteAddress = async (req, res) => {
+  try {
+    const repo = new AddressRepository((err) => res.status(400).send(err));
+    repo.deleteAddress(req.params.id);
+    return res.json({
+      ok: true,
+    });
+  } catch (error) {
+    return res.status(400).send('Ocorreu um erro ao tentar excluir o endereço');
+  }
+};
+
 module.exports = {
   create,
   getById,
   update,
+  deleteAddress,
 };
