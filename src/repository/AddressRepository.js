@@ -16,7 +16,7 @@ class AddressRepository extends BaseRepository {
       ]);
       return result.insertId;
     } catch (error) {
-      return error;
+      return Promise.reject(new Error(error));
     }
   }
 
@@ -26,7 +26,7 @@ class AddressRepository extends BaseRepository {
       const result = await this.query(query, [id]);
       return result;
     } catch (error) {
-      return error;
+      return Promise.reject(new Error(error));
     }
   }
 
@@ -46,7 +46,7 @@ class AddressRepository extends BaseRepository {
       ]);
       return result;
     } catch (error) {
-      return error;
+      return Promise.reject(new Error(error));
     }
   }
 
@@ -56,7 +56,7 @@ class AddressRepository extends BaseRepository {
       const result = await this.query(query, [id]);
       return result;
     } catch (error) {
-      return error;
+      return Promise.reject(new Error(error));
     }
   }
 }

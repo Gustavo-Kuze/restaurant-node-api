@@ -15,10 +15,7 @@ const create = joi.object({
 const addItem = joi.object({
   idCompra: joi.number().required(),
   idProduto: joi.number().required(),
-  quantidade: joi
-    .string()
-    .min(5)
-    .required(),
+  quantidade: joi.number().required(),
 });
 
 module.exports = { create, addItem };

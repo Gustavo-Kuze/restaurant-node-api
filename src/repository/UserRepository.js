@@ -12,7 +12,7 @@ class UserRepository extends BaseRepository {
       ]);
       return result.insertId;
     } catch (error) {
-      return error;
+      return Promise.reject(new Error(error));
     }
   }
 
@@ -23,7 +23,7 @@ class UserRepository extends BaseRepository {
 
       return this.query(query, [email]);
     } catch (error) {
-      return error;
+      return Promise.reject(new Error(error));
     }
   }
 
@@ -33,7 +33,7 @@ class UserRepository extends BaseRepository {
       const result = await this.query(query, [email]);
       return result && result.length > 0;
     } catch (error) {
-      return error;
+      return Promise.reject(new Error(error));
     }
   }
 
@@ -43,7 +43,7 @@ class UserRepository extends BaseRepository {
       const result = await this.query(query, [id]);
       return result;
     } catch (error) {
-      return error;
+      return Promise.reject(new Error(error));
     }
   }
 }

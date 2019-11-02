@@ -15,7 +15,7 @@ class OrderRepository extends BaseRepository {
 
       return result.insertId;
     } catch (error) {
-      return error;
+      return Promise.reject(new Error(error));
     }
   }
 
@@ -23,28 +23,35 @@ class OrderRepository extends BaseRepository {
     try {
       const createOrderItemQuery =
         'INSERT INTO itemcompra (id_produto, id_compra, quantidade) VALUES (?, ?, ?);';
-      const getOrderTotalValue = 'SELECT valor_total FROM compra WHERE id = ?;';
+      const getOrderTotalValue = 'SELECT preco_total FROM compra WHERE id = ?;';
+      const getProductPriceById = 'SELECT preco FROM produto WHERE id = ?;';
       const updateOrderQuery =
-        'UPDATE compra SET valor_total = ? WHERE id = ?;';
+        'UPDATE compra SET preco_total = ? WHERE id = ?;';
 
       const idOrderItem = (await this.query(createOrderItemQuery, [
-        orderItem.idCompra,
         orderItem.idProduto,
+        orderItem.idCompra,
         orderItem.quantidade,
       ])).insertId;
 
-      const totalValue = await this.query(getOrderTotalValue, [
+      const orderCurrentTotalValue = (await this.query(getOrderTotalValue, [
+        orderItem.idCompra,
+      ]))[0].preco_total;
+
+      const productValue = (await this.query(getProductPriceById, [
+        orderItem.idProduto,
+      ]))[0].preco;
+      await this.query(updateOrderQuery, [
+        orderCurrentTotalValue + productValue,
         orderItem.idCompra,
       ]);
 
-      await this.query(updateOrderQuery, [totalValue, orderItem.idCompra]);
-
       return {
         idOrderItem,
-        totalValue,
+        totalValue: orderCurrentTotalValue,
       };
     } catch (error) {
-      return error;
+      return Promise.reject(new Error(error));
     }
   }
 }

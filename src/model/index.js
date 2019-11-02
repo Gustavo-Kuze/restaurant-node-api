@@ -16,11 +16,11 @@ const getModel = (url) => {
   if (url.includes('/api/produto')) {
     return productModels.createOrUpdateProduct;
   }
-  if (url.includes('/api/compra')) {
-    return orderModels.create;
-  }
   if (url.includes('/api/compra/adicionar-item')) {
     return orderModels.addItem;
+  }
+  if (url.includes('/api/compra')) {
+    return orderModels.create;
   }
   return '';
 };
