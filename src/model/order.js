@@ -12,10 +12,15 @@ const create = joi.object({
     .required(),
 });
 
+const updateQuantity = joi.object({
+  id: joi.number().required(),
+  quantidade: joi.number().required(),
+});
+
 const addItem = joi.object({
   idCompra: joi.number().required(),
   idProduto: joi.number().required(),
   quantidade: joi.number().required(),
 });
 
-module.exports = { create, addItem };
+module.exports = { create, addItem, updateQuantity };

@@ -26,6 +26,19 @@ const addItem = async (req, res) => {
   }
 };
 
+const updateItemQuantity = async (req, res) => {
+  try {
+    const repo = new OrderRepository((err) => res.status(400).send(err));
+
+    const result = await repo.updateItemQuantity(req.body);
+
+    return res.json(result);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send(err);
+  }
+};
+
 const getTotal = async (req, res) => {
   try {
     const repo = new OrderRepository((err) => res.status(400).send(err));
@@ -43,4 +56,5 @@ module.exports = {
   create,
   addItem,
   getTotal,
+  updateItemQuantity,
 };

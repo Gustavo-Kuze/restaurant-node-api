@@ -19,6 +19,9 @@ const getModel = (url) => {
   if (url.includes('/api/compra/adicionar-item')) {
     return orderModels.addItem;
   }
+  if (url.includes('/api/compra/atualizar-quantidade')) {
+    return orderModels.updateQuantity;
+  }
   if (url.includes('/api/compra')) {
     return orderModels.create;
   }

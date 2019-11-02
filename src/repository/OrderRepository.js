@@ -38,6 +38,21 @@ class OrderRepository extends BaseRepository {
     }
   }
 
+  async updateItemQuantity(orderItem) {
+    try {
+      const query = 'UPDATE itemcompra set quantidade = ? WHERE id = ?;';
+
+      const result = await this.query(query, [
+        orderItem.quantidade,
+        orderItem.id,
+      ]);
+
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
+
   async getTotal(idCompra) {
     try {
       const query =
