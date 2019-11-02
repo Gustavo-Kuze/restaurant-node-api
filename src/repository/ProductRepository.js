@@ -45,11 +45,41 @@ class ProductRepository extends BaseRepository {
     });
   }
 
+  getAllEnabled() {
+    return new Promise((resolve, reject) => {
+      const query = 'SELECT * FROM produto WHERE desabilitado = 0;';
+
+      this.connection.query(query, (error, result) => {
+        if (error) {
+          return reject(
+            new Error(`Ocorreu um erro ao obter os dados: ${error}`),
+          );
+        }
+        return resolve(result);
+      });
+    });
+  }
+
+  getAll() {
+    return new Promise((resolve, reject) => {
+      const query = 'SELECT * FROM produto;';
+
+      this.connection.query(query, (error, result) => {
+        if (error) {
+          return reject(
+            new Error(`Ocorreu um erro ao obter os dados: ${error}`),
+          );
+        }
+        return resolve(result);
+      });
+    });
+  }
+
   update(product) {
     return new Promise((resolve, reject) => {
       const query =
         // eslint-disable-next-line max-len
-        'UPDATE produto SET preco = ?, nome = ?, descricao = ?, tamanho = ? WHERE id = ?;';
+        'UPDATE produto SET preco = ?, nome = ?, descricao = ?, tamanho = ?, desabilitado = ? WHERE id = ?;';
 
       this.connection.query(
         query,
@@ -58,6 +88,7 @@ class ProductRepository extends BaseRepository {
           product.nome,
           product.descricao,
           product.tamanho,
+          product.desabilitado || 0,
           product.id,
         ],
         (error, result) => {
