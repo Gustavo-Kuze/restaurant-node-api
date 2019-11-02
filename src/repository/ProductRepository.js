@@ -32,7 +32,7 @@ class ProductRepository extends BaseRepository {
 
   getById(id) {
     return new Promise((resolve, reject) => {
-      const query = 'SELECT * FROM produto WHERE id = ?;';
+      const query = 'SELECT * FROM produto WHERE id = ? AND desabilitado = 0;';
 
       this.connection.query(query, [id], (error, result) => {
         if (error) {
