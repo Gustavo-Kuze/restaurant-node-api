@@ -41,8 +41,9 @@ class OrderRepository extends BaseRepository {
       const productValue = (await this.query(getProductPriceById, [
         orderItem.idProduto,
       ]))[0].preco;
+
       await this.query(updateOrderQuery, [
-        orderCurrentTotalValue + productValue,
+        (orderCurrentTotalValue + productValue) * orderItem.quantidade,
         orderItem.idCompra,
       ]);
 
