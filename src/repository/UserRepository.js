@@ -61,7 +61,7 @@ class UserRepository extends BaseRepository {
     });
   }
 
-  delete(id) {
+  deleteUser(id) {
     return new Promise((resolve, reject) => {
       const query = 'DELETE FROM usuario WHERE id = ?';
 
