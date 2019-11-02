@@ -20,6 +20,7 @@
     "consistent-return": "off",
     "max-len": ["error", 80],
     "no-multi-spaces": "off",
-    "operator-linebreak": "off"
+    "operator-linebreak": "off",
+    "no-async-promise-executor": "off"
   }
 }

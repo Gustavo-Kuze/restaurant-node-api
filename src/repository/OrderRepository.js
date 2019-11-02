@@ -2,14 +2,6 @@
 const BaseRepository = require('./BaseRepository');
 
 class OrderRepository extends BaseRepository {
-  constructor(errorCallback) {
-    super();
-
-    this.connection.connect((err) => {
-      if (err && typeof errorCallback === 'function') errorCallback(err);
-    });
-  }
-
   create(order) {
     return new Promise((resolve, reject) => {
       const query =
