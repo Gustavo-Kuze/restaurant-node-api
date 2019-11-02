@@ -44,7 +44,7 @@ CREATE TABLE `usuario` (
 
 CREATE TABLE `produto` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `preco` decimal(10,0) NOT NULL,
+  `preco` decimal(10,2) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `descricao` varchar(100) DEFAULT NULL,
   `tamanho` varchar(10) DEFAULT NULL,
