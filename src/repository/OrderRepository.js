@@ -23,10 +23,6 @@ class OrderRepository extends BaseRepository {
     try {
       const createOrderItemQuery =
         'INSERT INTO itemcompra (id_produto, id_compra, quantidade) VALUES (?, ?, ?);';
-      const getOrderTotalValue = 'SELECT preco_total FROM compra WHERE id = ?;';
-      const getProductPriceById = 'SELECT preco FROM produto WHERE id = ?;';
-      const updateOrderQuery =
-        'UPDATE compra SET preco_total = ? WHERE id = ?;';
 
       const idOrderItem = (await this.query(createOrderItemQuery, [
         orderItem.idProduto,
@@ -34,22 +30,8 @@ class OrderRepository extends BaseRepository {
         orderItem.quantidade,
       ])).insertId;
 
-      const orderCurrentTotalValue = (await this.query(getOrderTotalValue, [
-        orderItem.idCompra,
-      ]))[0].preco_total;
-
-      const productValue = (await this.query(getProductPriceById, [
-        orderItem.idProduto,
-      ]))[0].preco;
-
-      await this.query(updateOrderQuery, [
-        (orderCurrentTotalValue + productValue) * orderItem.quantidade,
-        orderItem.idCompra,
-      ]);
-
       return {
         idOrderItem,
-        totalValue: orderCurrentTotalValue,
       };
     } catch (error) {
       return Promise.reject(new Error(error));

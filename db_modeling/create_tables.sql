@@ -56,7 +56,6 @@ CREATE TABLE `produto` (
 CREATE TABLE `compra` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_garcon` int(11) NOT NULL,
-  `preco_total` decimal(10,2) DEFAULT '0.00',
   `data` varchar(20) NOT NULL,
   `finalizada` int(1) DEFAULT '0',
   `codigo_comanda` varchar(50) DEFAULT NULL,
@@ -64,7 +63,7 @@ CREATE TABLE `compra` (
   UNIQUE KEY `idCompra_UNIQUE` (`id`),
   KEY `id_garcon_fk_idx` (`id_garcon`),
   CONSTRAINT `id_garcon_fk` FOREIGN KEY (`id_garcon`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=latin1;
 
 CREATE TABLE `itemcompra` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
