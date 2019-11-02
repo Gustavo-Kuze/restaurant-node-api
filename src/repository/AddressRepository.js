@@ -1,100 +1,63 @@
 const BaseRepository = require('./BaseRepository');
 
 class AddressRepository extends BaseRepository {
-  constructor(errorCallback) {
-    super();
-
-    this.connection.connect((err) => {
-      if (err && typeof errorCallback === 'function') errorCallback(err);
-    });
-  }
-
-  create(address) {
-    return new Promise((resolve, reject) => {
+  async create(address) {
+    try {
       const query =
         // eslint-disable-next-line max-len
         'INSERT INTO endereco (logradouro, numero, bairro, complemento, cidade, uf) VALUES (?, ?, ?, ?, ?, ?);';
-
-      this.connection.query(
-        query,
-        [
-          address.logradouro,
-          address.numero,
-          address.bairro,
-          address.complemento,
-          address.cidade,
-          address.uf,
-        ],
-        (error, result) => {
-          if (error) {
-            return reject(
-              new Error(`Ocorreu um erro ao gravar os dados: ${error}`),
-            );
-          }
-          return resolve(result.insertId);
-        },
-      );
-    });
+      const result = await this.query(query, [
+        address.logradouro,
+        address.numero,
+        address.bairro,
+        address.complemento,
+        address.cidade,
+        address.uf,
+      ]);
+      return result;
+    } catch (error) {
+      return error;
+    }
   }
 
-  getById(id) {
-    return new Promise((resolve, reject) => {
+  async getById(id) {
+    try {
       const query = 'SELECT * FROM endereco WHERE id = ?;';
-
-      this.connection.query(query, [id], (error, result) => {
-        if (error) {
-          return reject(
-            new Error(`Ocorreu um erro ao obter os dados: ${error}`),
-          );
-        }
-        return resolve(result);
-      });
-    });
+      const result = await this.query(query, [id]);
+      return result;
+    } catch (error) {
+      return error;
+    }
   }
 
-  update(address) {
-    return new Promise((resolve, reject) => {
+  async update(address) {
+    try {
       const query =
         // eslint-disable-next-line max-len
         'UPDATE endereco SET logradouro = ?, numero = ?, bairro = ?, complemento = ?, cidade = ?, uf = ? WHERE id = ?;';
-
-      this.connection.query(
-        query,
-        [
-          address.logradouro,
-          address.numero,
-          address.bairro,
-          address.complemento,
-          address.cidade,
-          address.uf,
-          address.id,
-        ],
-        (error, result) => {
-          if (error) {
-            return reject(
-              new Error(`Ocorreu um erro ao atualizar os dados: ${error}`),
-            );
-          }
-          return resolve(result);
-        },
-      );
-    });
+      const result = await this.query(query, [
+        address.logradouro,
+        address.numero,
+        address.bairro,
+        address.complemento,
+        address.cidade,
+        address.uf,
+        address.id,
+      ]);
+      return result;
+    } catch (error) {
+      return error;
+    }
   }
 
-  deleteAddress(id) {
-    return new Promise((resolve, reject) => {
+  async deleteAddress(id) {
+    try {
       const query = 'DELETE FROM endereco WHERE id = ?';
-
-      this.connection.query(query, [id], (error, result) => {
-        if (error) {
-          return reject(
-            new Error(`Ocorreu um erro ao excluir os dados: ${error}`),
-          );
-        }
-
-        return resolve(result && result.length > 0);
-      });
-    });
+      const result = await this.query(query, [id]);
+      return result;
+    } catch (error) {
+      return error;
+    }
   }
 }
 
