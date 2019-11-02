@@ -14,7 +14,7 @@ class AddressRepository extends BaseRepository {
         address.cidade,
         address.uf,
       ]);
-      return result;
+      return result.insertId;
     } catch (error) {
       return error;
     }
