@@ -37,6 +37,19 @@ class OrderRepository extends BaseRepository {
       return Promise.reject(new Error(error));
     }
   }
+
+  async getTotal(idCompra) {
+    try {
+      const query =
+        'SELECT SUM(c.quantidade * p.preco) AS total FROM itemcompra c LEFT JOIN produto p ON c.id_produto = p.id WHERE id_compra = ?';
+
+      const result = await this.query(query, [idCompra]);
+
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
 }
 
 module.exports = OrderRepository;
