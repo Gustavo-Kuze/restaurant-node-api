@@ -6,7 +6,6 @@ const dotenv = require('dotenv');
 const {
   userRouter,
   postsRouter,
-  mysqlRouter,
   addressRouter,
   personRouter,
   productRouter,
@@ -18,7 +17,6 @@ app.use(express.json());
 
 app.use('/api/usuario', userRouter);
 app.use('/api/posts', postsRouter);
-app.use('/api/mysql', mysqlRouter);
 app.use('/api/endereco', addressRouter);
 app.use('/api/produto', productRouter);
 app.use('/api/informacoes-pessoais', personRouter);
