@@ -53,32 +53,29 @@ CREATE TABLE `produto` (
   UNIQUE KEY `idProduto_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
+CREATE TABLE `compra` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `id_garcon` int(11) NOT NULL,
+  `preco_total` decimal(10,2) DEFAULT '0.00',
+  `data` varchar(20) NOT NULL,
+  `finalizada` int(1) DEFAULT '0',
+  `codigo_comanda` varchar(50) DEFAULT NULL,
+  `cancelada` int(1) DEFAULT '0',
+  UNIQUE KEY `idCompra_UNIQUE` (`id`),
+  KEY `id_garcon_fk_idx` (`id_garcon`),
+  CONSTRAINT `id_garcon_fk` FOREIGN KEY (`id_garcon`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 CREATE TABLE `itemcompra` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `id_produto` int(11) NOT NULL,
+  `id_compra` int(11) NOT NULL,
   `quantidade` int(3) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `idItemCompra_UNIQUE` (`id`),
   KEY `id_produto_fk_idx` (`id_produto`),
+  KEY `id_compra_fk_idx` (`id_compra`),
+  CONSTRAINT `id_compra_fk` FOREIGN KEY (`id_compra`) REFERENCES `compra` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   CONSTRAINT `id_produto_fk` FOREIGN KEY (`id_produto`) REFERENCES `produto` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-CREATE TABLE `compra` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `id_cliente` int(11) NOT NULL,
-  `id_garcon` int(11) NOT NULL,
-  `id_item_compra` int(11) NOT NULL,
-  `preco_total` decimal(10,0) NOT NULL,
-  `data` varchar(20) NOT NULL,
-  `finalizada` int(1) NOT NULL DEFAULT '0',
-  `codigo_comanda` varchar(50) DEFAULT NULL,
-  `cancelada` int(1) NOT NULL DEFAULT '0',
-  UNIQUE KEY `idCompra_UNIQUE` (`id`),
-  KEY `id_cliente_fk_idx` (`id_cliente`),
-  KEY `id_garcon_fk_idx` (`id_garcon`),
-  KEY `id_item_compra_fk_idx` (`id_item_compra`),
-  CONSTRAINT `id_cliente_fk` FOREIGN KEY (`id_cliente`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `id_garcon_fk` FOREIGN KEY (`id_garcon`) REFERENCES `usuario` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
-  CONSTRAINT `id_item_compra_fk` FOREIGN KEY (`id_item_compra`) REFERENCES `itemcompra` (`id`) ON DELETE NO ACTION ON UPDATE NO ACTION
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
