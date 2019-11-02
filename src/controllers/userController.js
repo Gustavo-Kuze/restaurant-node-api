@@ -32,7 +32,10 @@ const login = async (req, res) => {
   const user = await repo.getUserByEmail(req.body.email);
 
   if (!user) {
-    return res.status(400).send('E-mail não encontrado');
+    return res.status(400).send(
+      // eslint-disable-next-line max-len
+      'E-mail não encontrado. Caso seu usuário tenha sido desabilitado, entre em contato com a administração para habilitá-lo outra novamente.',
+    );
   }
   console.log(user);
 
