@@ -2,7 +2,6 @@ const express = require('express');
 
 const app = express();
 const port = 5203;
-const mongoose = require('mongoose');
 const dotenv = require('dotenv');
 const {
   userRouter,
@@ -14,14 +13,6 @@ const {
 } = require('./src/routes/');
 
 dotenv.config();
-
-mongoose
-  .connect(
-    process.env.DB_CONNECT,
-    { useNewUrlParser: true },
-    { useUnifiedTopology: true },
-  )
-  .catch((err) => console.error(err));
 
 app.use(express.json());
 
