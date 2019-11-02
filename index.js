@@ -10,7 +10,7 @@ const {
   mysqlRouter,
   addressRouter,
   personRouter,
-} = require('./routes/');
+} = require('./src/routes/');
 
 dotenv.config();
 
