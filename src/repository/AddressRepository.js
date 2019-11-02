@@ -72,7 +72,7 @@ class AddressRepository extends BaseRepository {
         (error, result) => {
           if (error) {
             return reject(
-              new Error(`Ocorreu um erro ao gravar os dados: ${error}`),
+              new Error(`Ocorreu um erro ao atualizar os dados: ${error}`),
             );
           }
           return resolve(result);

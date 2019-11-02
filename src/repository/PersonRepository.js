@@ -11,33 +11,39 @@ class PersonRepository extends BaseRepository {
 
   create(person) {
     return new Promise((resolve, reject) => {
-      const query = `INSERT INTO pessoa (nome, data_nascimento, cpf, rg, telefone1, telefone2, id_endereco, estado_civil) VALUES ('${
-        person.nome
-      }', '${person.dataNascimento}', '${person.cpf
-                || ''}', '${person.rg || ''}', '${
-        person.telefone1
-      }', '${person.telefone2 || ''}', '${person.idEndereco}', '${
-        person.estadoCivil
-      }');`;
+      const query =
+        // eslint-disable-next-line max-len
+        'INSERT INTO pessoa (nome, data_nascimento, cpf, rg, telefone1, telefone2, id_endereco, estado_civil) VALUES (?, ?, ?, ?, ?, ?, ?, ?);';
 
-      this.connection.query(query, (error, result) => {
-        if (error) {
-          return reject(
-            new Error(
-              `Ocorreu um erro ao gravar os dados: ${error}`,
-            ),
-          );
-        }
-        return resolve(result.insertId);
-      });
+      this.connection.query(
+        query,
+        [
+          person.nome,
+          person.dataNascimento,
+          person.cpf,
+          person.rg,
+          person.telefone1,
+          person.telefone2,
+          person.idEndereco,
+          person.estadoCivil,
+        ],
+        (error, result) => {
+          if (error) {
+            return reject(
+              new Error(`Ocorreu um erro ao gravar os dados: ${error}`),
+            );
+          }
+          return resolve(result.insertId);
+        },
+      );
     });
   }
 
   getById(id) {
     return new Promise((resolve, reject) => {
-      const query = `SELECT * FROM pessoa WHERE id = ${id};`;
+      const query = 'SELECT * FROM pessoa WHERE id = ?;';
 
-      this.connection.query(query, (error, result) => {
+      this.connection.query(query, [id], (error, result) => {
         if (error) {
           return reject(
             new Error(`Ocorreu um erro ao obter os dados: ${error}`),
@@ -50,29 +56,31 @@ class PersonRepository extends BaseRepository {
 
   update(person) {
     return new Promise((resolve, reject) => {
-      const query = `UPDATE pessoa SET nome = '${
-        person.nome
-      }', data_nascimento = '${
-        person.dataNascimento
-      }', cpf = '${person.cpf || ''}', rg = '${person.rg
-                || ''}', telefone1 = '${
-        person.telefone1
-      }', telefone2 = '${person.telefone2 || ''}', id_endereco = '${
-        person.idEndereco
-      }', estado_civil = '${person.estadoCivil}' WHERE id = ${
-        person.id
-      };`;
+      const query =
+        // eslint-disable-next-line max-len
+        'UPDATE pessoa SET nome = ?, data_nascimento = ?, cpf = ?, rg = ?, telefone1 = ?, telefone2 = ?, id_endereco = ?, estado_civil = ? WHERE id = ?;';
 
-      this.connection.query(query, (error, result) => {
-        if (error) {
-          return reject(
-            new Error(
-              `Ocorreu um erro ao gravar os dados: ${error}`,
-            ),
-          );
-        }
-        return resolve(result);
-      });
+      this.connection.query(
+        query,
+        [
+          person.nome,
+          person.dataNascimento,
+          person.cpf,
+          person.rg,
+          person.telefone1,
+          person.telefone2,
+          person.estadoCivil,
+          person.id,
+        ],
+        (error, result) => {
+          if (error) {
+            return reject(
+              new Error(`Ocorreu um erro ao atualizar os dados: ${error}`),
+            );
+          }
+          return resolve(result);
+        },
+      );
     });
   }
 }
