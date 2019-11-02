@@ -60,17 +60,17 @@ class OrderRepository extends BaseRepository {
 
       const result = await this.query(query, [idCompra]);
 
-      return result;
+      return result[0] && result[0].total ? result[0].total : 0.0;
     } catch (error) {
       return Promise.reject(new Error(error));
     }
   }
 
-  async deleteItem(orderItem) {
+  async deleteItem(id) {
     try {
       const query = 'DELETE FROM itemcompra WHERE id = ?';
 
-      const result = await this.query(query, [orderItem.id]);
+      const result = await this.query(query, [id]);
 
       return result;
     } catch (error) {
@@ -80,7 +80,7 @@ class OrderRepository extends BaseRepository {
 
   async deleteAllItems(idCompra) {
     try {
-      const query = 'DELETE FROM itemcompra WHERE idCompra = ?';
+      const query = 'DELETE FROM itemcompra WHERE id_compra = ?';
 
       const result = await this.query(query, [idCompra]);
 
