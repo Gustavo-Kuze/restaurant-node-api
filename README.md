@@ -4,17 +4,18 @@ API Rest para um sistema de restaurante que estou desenvolvendo.
 
 # Como usar
 1. Tenha certeza de que você possui o NodeJS instalado
-2. Tenha certeza de que você possui o WAMP Server instalado
-3. Tenha certeza de que você tem algum gerenciador de MySQL como Worchbenk
-4. Clone a branch master desse diretório usando git bash
-5. Entre em seu gerenciador do banco de dados e execute os scripts do arquivo "db_modeling/create_tables.sql" em ordem. Faça isso de um a um, preferencialmente, pois esse arquivo pode mudar, impedindo que todos os script sejam rodados de uma única vez
-6. No cmd ou terminal digite esses dois comandos
+2. Tenha certeza de que você possui o Yarn instalado
+3. Tenha certeza de que você possui o WAMP Server instalado
+4. Tenha certeza de que você tem algum gerenciador de MySQL como Worchbenk
+5. Clone a branch master desse diretório usando git bash
+6. Entre em seu gerenciador do banco de dados e execute os scripts do arquivo "db_modeling/create_tables.sql" em ordem. Faça isso de um a um, preferencialmente, pois esse arquivo pode mudar, impedindo que todos os script sejam rodados de uma única vez
+7. No cmd ou terminal digite esses dois comandos
 ```
 yarn
 ...
 yarn start
 ```
-7. Pronto, tudo deve estar funcionando
+8. Pronto, tudo deve estar funcionando
 
 # Tecnologias usadas
 
