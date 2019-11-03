@@ -10,13 +10,14 @@ yarn
 yarn start
 ```
 
-| Tecnologias   |               |      |
-| ------------- |:-------------:| -----:|
-| Banco de dados      | MySQL | Queries inclusas |
-| Ferramenta de testes      | Postman      |   Collection inclusa |
-| Validações de input | @hapi-joi      |     |
-| Controle de inicialização dev | Nodemon      |     |
-| Controle de inicialização produção | // a implementar pm2...      |     |
+| Tecnologias   |  lib             |   descrição   |
+| ------------- |:-------------:| :-----:|
+| Banco de dados      | mysql | Queries MySQL inclusas |
+| Ferramenta de testes      |    ...   |   Postman Collections inclusas |
+| Validações de input |    @hapi-joi    |  ...  |
+| Controle de inicialização dev | nodemon      |   ...  |
+| Controle de inicialização produção | pm2      |   // a implementar  |
+| Autenticação |    jsonwebtoken   |    JWT |
 
 # Princípios que precisam ser respeitados:
 
