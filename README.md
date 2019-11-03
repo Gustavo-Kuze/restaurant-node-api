@@ -28,7 +28,7 @@ yarn start
 | Controle de inicialização produção | pm2      |   // todo...  |
 | Autenticação |    jsonwebtoken   |    JWT |
 
-# Princípios que precisam ser respeitados:
+# Algumas regras de negócio importantes...
 
 ## TELA GARÇOM (Mobile)
 	- O garçom poderá fazer login no app, e só poderá utilizá-lo caso esteja logado
