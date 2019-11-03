@@ -3,20 +3,28 @@
 API Rest para um sistema de restaurante que estou desenvolvendo.
 
 # Como usar
-1. No cmd ou terminal digite esses dois comandos
+1. Tenha certeza de que você possui o NodeJS instalado
+2. Tenha certeza de que você possui o WAMP Server instalado
+3. Tenha certeza de que você tem algum gerenciador de MySQL como Worchbenk
+4. Clone a branch master desse diretório usando git bash
+5. Entre em seu gerenciador do banco de dados e execute os scripts do arquivo "db_modeling/create_tables.sql" em ordem. Faça isso de um a um, preferencialmente, pois esse arquivo pode mudar, impedindo que todos os script sejam rodados de uma única vez
+6. No cmd ou terminal digite esses dois comandos
 ```
 yarn
 ...
 yarn start
 ```
+7. Pronto, tudo deve estar funcionando
 
-| Tecnologias   |  lib             |   descrição   |
+# Tecnologias usadas
+
+| Utilidade     |  lib/app      | descrição   |
 | ------------- |:-------------:| :-----:|
 | Banco de dados      | mysql | Queries MySQL inclusas |
-| Ferramenta de testes      |    ...   |   Postman Collections inclusas |
+| Ferramenta de testes      |    Postman   |   Postman Collections inclusas |
 | Validações de input |    @hapi-joi    |  ...  |
 | Controle de inicialização dev | nodemon      |   ...  |
-| Controle de inicialização produção | pm2      |   // a implementar  |
+| Controle de inicialização produção | pm2      |   // todo...  |
 | Autenticação |    jsonwebtoken   |    JWT |
 
 # Princípios que precisam ser respeitados:
