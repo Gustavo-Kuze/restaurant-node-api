@@ -45,7 +45,13 @@ const login = async (req, res) => {
     }
 
     // eslint-disable-next-line no-underscore-dangle
-    const token = jwt.sign({ id: user._id }, process.env.SECRET);
+    const token = jwt.sign(
+      {
+        id: user.id,
+        tipo_usuario: user.tipo_usuario,
+      },
+      process.env.SECRET,
+    );
     return res.header('access_token', token).send(token);
   } catch (error) {
     console.log(error);
