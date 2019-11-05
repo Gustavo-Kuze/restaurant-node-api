@@ -52,7 +52,10 @@ const login = async (req, res) => {
       },
       process.env.SECRET,
     );
-    return res.header('access_token', token).send(token);
+    return res
+      .header('access_token', token)
+      .header('tipo_usuario', user.tipo_usuario)
+      .send(token);
   } catch (error) {
     console.log(error);
     return res.status(400).send('Ocorreu um erro ao tentar fazer login');
