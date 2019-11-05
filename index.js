@@ -1,4 +1,5 @@
 const express = require('express');
+const cors = require('cors');
 
 const app = express();
 const port = 5203;
@@ -15,6 +16,9 @@ const {
 dotenv.config();
 
 app.use(express.json());
+
+app.use(cors());
+app.options('*', cors());
 
 app.use('/api/usuario', userRouter);
 app.use('/api/posts', postsRouter);
