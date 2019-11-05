@@ -21,7 +21,7 @@ class UserRepository extends BaseRepository {
       const query =
         'SELECT * FROM usuario WHERE email = ? AND desabilitado = 0';
 
-      return this.query(query, [email]);
+      return (await this.query(query, [email]))[0];
     } catch (error) {
       return Promise.reject(new Error(error));
     }
