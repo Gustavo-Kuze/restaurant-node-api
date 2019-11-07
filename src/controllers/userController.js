@@ -55,7 +55,10 @@ const login = async (req, res) => {
     return res
       .header('access_token', token)
       .header('tipo_usuario', user.tipo_usuario)
-      .send(token);
+      .json({
+        token,
+        user: { tipoUsuario: user.tipo_usuario, email: user.email },
+      });
   } catch (error) {
     console.log(error);
     return res.status(400).send('Ocorreu um erro ao tentar fazer login');
