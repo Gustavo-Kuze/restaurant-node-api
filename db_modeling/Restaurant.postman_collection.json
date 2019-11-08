@@ -1,6 +1,6 @@
 {
 	"info": {
-		"_postman_id": "d4bd92b6-6bb9-4ba2-a713-553423039058",
+		"_postman_id": "79a99e9c-d1cc-4943-b2c2-914d084a28e6",
 		"name": "Restaurant",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
@@ -22,12 +22,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"email\": \"tes2te@teste.com\",\n\t\"senha\": \"123123\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"email\": \"tes2te@teste.com\",\n\t\"senha\": \"123123\"\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/usuario/login",
@@ -57,12 +52,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"tipoUsuario\": \"admin\",\n\t\"email\": \"teste@teste2.com\",\n\t\"senha\": \"123123\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"tipoUsuario\": \"admin\",\n\t\"email\": \"teste@teste2.com\",\n\t\"senha\": \"123123\"\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/usuario/registrar",
@@ -114,6 +104,46 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ATUALIZAR INFORMAÇÕES PESSOAIS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\": 7,\n\t\"personId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{HOST}}/api/usuario/dados-pessoais",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"dados-pessoais"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}
@@ -145,12 +175,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"logradouro\": \"Rua da Conceição\",\n\t\"numero\": 23,\n\t\"bairro\": \"centro\",\n\t\"cidade\": \"Carlos Barbosa\",\n\t\"uf\": \"RS\",\n\t\"complemento\": \"Ao lado do mercadinho\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"logradouro\": \"Rua da Conceição\",\n\t\"numero\": 23,\n\t\"bairro\": \"centro\",\n\t\"cidade\": \"Carlos Barbosa\",\n\t\"uf\": \"RS\",\n\t\"complemento\": \"Ao lado do mercadinho\"\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/endereco",
@@ -189,12 +214,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"logradouro\": \"Rua da Conceição\",\n\t\"numero\": 23,\n\t\"bairro\": \"centro\",\n\t\"cidade\": \"Carlos Barbosa\",\n\t\"uf\": \"RS\",\n\t\"complemento\": \"Ao lado do mercadinho\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"logradouro\": \"Rua da Conceição\",\n\t\"numero\": 23,\n\t\"bairro\": \"centro\",\n\t\"cidade\": \"Carlos Barbosa\",\n\t\"uf\": \"RS\",\n\t\"complemento\": \"Ao lado do mercadinho\"\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/endereco/2",
@@ -384,12 +404,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"preco\": 12.23,\r\n        \"nome\": \"Pastel de queijo\",\r\n        \"descricao\": \"Sabor 4 queijos\",\r\n        \"tamanho\": \"grande\"\r\n    }",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\r\n        \"preco\": 12.23,\r\n        \"nome\": \"Pastel de queijo\",\r\n        \"descricao\": \"Sabor 4 queijos\",\r\n        \"tamanho\": \"grande\"\r\n    }"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/produto/2",
@@ -429,12 +444,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"preco\": 13.23,\n\t\"nome\": \"Pastel Strogonoff de Frango\",\n\t\"descricao\": \"Cebola, Alho, Molho branco, molho de tomate\",\n\t\"tamanho\": \"grande\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"preco\": 13.23,\n\t\"nome\": \"Pastel Strogonoff de Frango\",\n\t\"descricao\": \"Cebola, Alho, Molho branco, molho de tomate\",\n\t\"tamanho\": \"grande\"\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/produto",
@@ -515,12 +525,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"idCompra\": 12,\n\t\"idProduto\": 3,\n\t\"quantidade\": 1\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"idCompra\": 12,\n\t\"idProduto\": 3,\n\t\"quantidade\": 1\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/compra/adicionar-item",
@@ -560,12 +565,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"id\": 12,\n\t\"quantidade\": 233\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"id\": 12,\n\t\"quantidade\": 233\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/compra/atualizar-quantidade",
@@ -605,12 +605,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"id\": 12,\n\t\"estado\": \"finalizada\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"id\": 12,\n\t\"estado\": \"finalizada\"\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/compra/finalizar",
@@ -653,12 +648,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"idCompra\": 12,\n\t\"idProduto\": 3,\n\t\"quantidade\": 1\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"idCompra\": 12,\n\t\"idProduto\": 3,\n\t\"quantidade\": 1\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/compra/total/12",
@@ -702,12 +692,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"idCompra\": 12,\n\t\"idProduto\": 3,\n\t\"quantidade\": 1\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"idCompra\": 12,\n\t\"idProduto\": 3,\n\t\"quantidade\": 1\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/compra/",
@@ -747,12 +732,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"idGarcon\": 11,\n\t\"data\": \"30/02/2019\",\n\t\"codigoComanda\": \"99382ASD\"\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"idGarcon\": 11,\n\t\"data\": \"30/02/2019\",\n\t\"codigoComanda\": \"99382ASD\"\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/compra",
@@ -871,12 +851,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nome\": \"Fulano dos Santos\",\n\t\"dataNascimento\": \"30/03/1998\",\n\t\"cpf\": \"02399288393\",\n\t\"telefone1\": \"51999292828\",\n\t\"estadoCivil\": \"solteiro\",\n\t\"idEndereco\": 3\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"nome\": \"Fulano dos Santos\",\n\t\"dataNascimento\": \"30/03/1998\",\n\t\"cpf\": \"02399288393\",\n\t\"telefone1\": \"51999292828\",\n\t\"estadoCivil\": \"solteiro\",\n\t\"idEndereco\": 3\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/informacoes-pessoais",
@@ -951,12 +926,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"nome\": \"Fulano dos Santos\",\n\t\"dataNascimento\": \"30/03/1998\",\n\t\"cpf\": \"02399288393\",\n\t\"telefone1\": \"51999292828\",\n\t\"telefone2\": \"11999292823\",\n\t\"estadoCivil\": \"casado\",\n\t\"idEndereco\": 3\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
+							"raw": "{\n\t\"nome\": \"Fulano dos Santos\",\n\t\"dataNascimento\": \"30/03/1998\",\n\t\"cpf\": \"02399288393\",\n\t\"telefone1\": \"51999292828\",\n\t\"telefone2\": \"11999292823\",\n\t\"estadoCivil\": \"casado\",\n\t\"idEndereco\": 3\n}"
 						},
 						"url": {
 							"raw": "{{HOST}}/api/informacoes-pessoais/1",
@@ -967,6 +937,46 @@
 								"api",
 								"informacoes-pessoais",
 								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR ENDEREÇO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"personId\": 1,\n\t\"addressId\": 2\n}"
+						},
+						"url": {
+							"raw": "{{HOST}}/api/informacoes-pessoais/endereco",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"informacoes-pessoais",
+								"endereco"
 							]
 						}
 					},
