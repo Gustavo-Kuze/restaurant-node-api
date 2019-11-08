@@ -54,6 +54,20 @@ class PersonRepository extends BaseRepository {
     }
   }
 
+  async setPersonAddress(personId, addressId) {
+    try {
+      console.log(personId);
+      console.log(addressId);
+      const query =
+        // eslint-disable-next-line max-len
+        'UPDATE pessoa SET id_endereco = ? WHERE id = ?;';
+      const result = await this.query(query, [addressId, personId]);
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
+
   async deletePerson(id) {
     try {
       const query = 'DELETE FROM pessoa WHERE id = ?';

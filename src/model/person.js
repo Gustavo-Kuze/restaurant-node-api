@@ -20,4 +20,9 @@ const createOrUpdatePerson = joi.object({
   estadoCivil: joi.string().required(),
 });
 
-module.exports = { createOrUpdatePerson };
+const setPersonAddress = joi.object({
+  addressId: joi.number().required(),
+  personId: joi.number().required(),
+});
+
+module.exports = { createOrUpdatePerson, setPersonAddress };

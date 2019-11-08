@@ -7,8 +7,14 @@ const orderModels = require('./order');
 const getModel = (url) => {
   if (url.includes('/api/usuario/registrar')) return userModels.register;
   if (url.includes('/api/usuario/login')) return userModels.login;
+  if (url.includes('/api/usuario/dados-pessoais')) {
+    return userModels.setPersonalInfo;
+  }
   if (url.includes('/api/endereco')) {
     return addressModels.createOrUpdateAddress;
+  }
+  if (url.includes('/api/informacoes-pessoais/endereco')) {
+    return personModels.setPersonAddress;
   }
   if (url.includes('/api/informacoes-pessoais')) {
     return personModels.createOrUpdatePerson;

@@ -28,4 +28,9 @@ const login = joi.object({
     .required(),
 });
 
-module.exports = { register, login };
+const setPersonalInfo = joi.object({
+  userId: joi.number().required(),
+  personId: joi.number().required(),
+});
+
+module.exports = { register, login, setPersonalInfo };

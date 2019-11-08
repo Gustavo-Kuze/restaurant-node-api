@@ -27,6 +27,16 @@ class UserRepository extends BaseRepository {
     }
   }
 
+  async setPersonalInfo(userId, personId) {
+    try {
+      const query = 'UPDATE usuario SET id_pessoa = ? WHERE id = ?';
+
+      return (await this.query(query, [personId, userId]))[0];
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
+
   async isEmailRegistered(email) {
     try {
       const query = 'SELECT * FROM usuario WHERE email = ?';

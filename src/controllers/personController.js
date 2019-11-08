@@ -39,10 +39,23 @@ const update = async (req, res) => {
   }
 };
 
+const setPersonAddress = async (req, res) => {
+  try {
+    const repo = new PersonRepository((err) => res.status(400).send(err));
+    console.log(req.body);
+    repo.setPersonAddress(req.body.personId, req.body.addressId);
+    return res.json({
+      ok: true,
+    });
+  } catch (error) {
+    return res.status(400).send('Ocorreu um erro ao tentar excluir a pessoa');
+  }
+};
+
 const deletePerson = async (req, res) => {
   try {
     const repo = new PersonRepository((err) => res.status(400).send(err));
-    repo.deletePerson(req.params.id);
+    repo.deletePerson(req.body.personId, req.body.addressId);
     return res.json({
       ok: true,
     });
@@ -56,4 +69,5 @@ module.exports = {
   getById,
   update,
   deletePerson,
+  setPersonAddress,
 };

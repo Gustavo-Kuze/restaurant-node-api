@@ -65,6 +65,20 @@ const login = async (req, res) => {
   }
 };
 
+const setPersonalInfo = async (req, res) => {
+  try {
+    const repo = new UsuarioRepository((err) => res.status(400).send(err));
+    repo.setPersonalInfo(req.body.userId, req.body.personId);
+    return res.json({
+      ok: true,
+    });
+  } catch (error) {
+    return res
+      .status(400)
+      .send('Ocorreu um erro ao tentar atualizar o usuário');
+  }
+};
+
 const deleteUser = async (req, res) => {
   try {
     const repo = new UsuarioRepository((err) => res.status(400).send(err));
@@ -81,4 +95,5 @@ module.exports = {
   register,
   login,
   deleteUser,
+  setPersonalInfo,
 };
