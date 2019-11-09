@@ -47,6 +47,18 @@ class UserRepository extends BaseRepository {
     }
   }
 
+  async setDisabledState(userId, disabled) {
+    try {
+      const query =
+        // eslint-disable-next-line max-len
+        'UPDATE usuario SET desabilitado = ? WHERE id = ?;';
+      const result = await this.query(query, [disabled, userId]);
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
+
   async deleteUser(id) {
     try {
       const query = 'UPDATE usuario SET desabilitado = 1 WHERE id = ?';

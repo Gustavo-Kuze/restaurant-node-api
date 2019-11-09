@@ -33,4 +33,14 @@ const setPersonalInfo = joi.object({
   personId: joi.number().required(),
 });
 
-module.exports = { register, login, setPersonalInfo };
+const setDisabledState = joi.object({
+  usuarioId: joi.number().required(),
+  desabilitado: joi.number().required(),
+});
+
+module.exports = {
+  register,
+  login,
+  setPersonalInfo,
+  setDisabledState,
+};

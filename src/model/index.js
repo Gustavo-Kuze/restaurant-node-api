@@ -10,6 +10,9 @@ const getModel = (url) => {
   if (url.includes('/api/usuario/dados-pessoais')) {
     return userModels.setPersonalInfo;
   }
+  if (url.includes('/api/usuario/alterar-desabilitado')) {
+    return userModels.setDisabledState;
+  }
   if (url.includes('/api/endereco')) {
     return addressModels.createOrUpdateAddress;
   }
@@ -18,6 +21,9 @@ const getModel = (url) => {
   }
   if (url.includes('/api/informacoes-pessoais')) {
     return personModels.createOrUpdatePerson;
+  }
+  if (url.includes('/api/produto/alterar-desabilitado')) {
+    return productModels.setDisabledState;
   }
   if (url.includes('/api/produto')) {
     return productModels.createOrUpdateProduct;

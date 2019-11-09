@@ -67,6 +67,18 @@ class ProductRepository extends BaseRepository {
     }
   }
 
+  async setDisabledState(productId, disabled) {
+    try {
+      const query =
+        // eslint-disable-next-line max-len
+        'UPDATE produto SET desabilitado = ? WHERE id = ?;';
+      const result = await this.query(query, [disabled, productId]);
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
+
   async deleteProduct(id) {
     try {
       const query = 'UPDATE produto SET desabilitado = 1 WHERE id = ?;';

@@ -19,4 +19,9 @@ const createOrUpdateProduct = joi.object({
     .required(),
 });
 
-module.exports = { createOrUpdateProduct };
+const setDisabledState = joi.object({
+  produtoId: joi.number().required(),
+  desabilitado: joi.number().required(),
+});
+
+module.exports = { createOrUpdateProduct, setDisabledState };

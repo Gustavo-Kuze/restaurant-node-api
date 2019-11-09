@@ -77,6 +77,20 @@ const deleteProduct = async (req, res) => {
   }
 };
 
+const setDisabledState = async (req, res) => {
+  try {
+    const repo = new ProductRepository((err) => res.status(400).send(err));
+    repo.setDisabledState(req.body.produtoId, req.body.desabilitado);
+    return res.json({
+      ok: true,
+    });
+  } catch (error) {
+    return res
+      .status(400)
+      .send('Ocorreu um erro ao tentar atualizar o produto');
+  }
+};
+
 module.exports = {
   create,
   getById,
@@ -84,4 +98,5 @@ module.exports = {
   deleteProduct,
   getAllEnabled,
   getAll,
+  setDisabledState,
 };

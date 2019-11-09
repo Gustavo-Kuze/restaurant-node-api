@@ -106,7 +106,7 @@
 					"response": []
 				},
 				{
-					"name": "ATUALIZAR INFORMAÇÕES PESSOAIS",
+					"name": "ALTERAR ESTADO DESABILITADO",
 					"request": {
 						"auth": {
 							"type": "bearer",
@@ -129,17 +129,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n\t\"userId\": 7,\n\t\"personId\": 1\n}"
+							"raw": "{\n\t\"usuarioId\": 7,\n\t\"desabilitado\": 0\n}"
 						},
 						"url": {
-							"raw": "{{HOST}}/api/usuario/dados-pessoais",
+							"raw": "{{HOST}}/api/usuario/alterar-desabilitado",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
 								"api",
 								"usuario",
-								"dados-pessoais"
+								"alterar-desabilitado"
 							]
 						}
 					},
@@ -212,6 +212,46 @@
 								"api",
 								"usuario",
 								"obter-todos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ATUALIZAR INFORMAÇÕES PESSOAIS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"userId\": 7,\n\t\"personId\": 1\n}"
+						},
+						"url": {
+							"raw": "{{HOST}}/api/usuario/dados-pessoais",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"dados-pessoais"
 							]
 						}
 					},
@@ -476,17 +516,17 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n        \"preco\": 12.23,\r\n        \"nome\": \"Pastel de queijo\",\r\n        \"descricao\": \"Sabor 4 queijos\",\r\n        \"tamanho\": \"grande\"\r\n    }"
+							"raw": "{\r\n        \"preco\": 12.23,\r\n        \"nome\": \"Pastel de queijo\",\r\n        \"descricao\": \"Sabor 4234 queijos\",\r\n        \"tamanho\": \"grande\"\r\n    }"
 						},
 						"url": {
-							"raw": "{{HOST}}/api/produto/2",
+							"raw": "{{HOST}}/api/produto/5",
 							"host": [
 								"{{HOST}}"
 							],
 							"path": [
 								"api",
 								"produto",
-								"2"
+								"5"
 							]
 						}
 					},
@@ -562,6 +602,46 @@
 								"api",
 								"produto",
 								"2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALTERAR ESTADO DESABILITADO",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"produtoId\": 5,\n\t\"desabilitado\": 1\n}"
+						},
+						"url": {
+							"raw": "{{HOST}}/api/produto/alterar-desabilitado",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"produto",
+								"alterar-desabilitado"
 							]
 						}
 					},

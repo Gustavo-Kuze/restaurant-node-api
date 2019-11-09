@@ -117,6 +117,20 @@ const getAll = async (req, res) => {
   }
 };
 
+const setDisabledState = async (req, res) => {
+  try {
+    const repo = new UsuarioRepository((err) => res.status(400).send(err));
+    repo.setDisabledState(req.body.usuarioId, req.body.desabilitado);
+    return res.json({
+      ok: true,
+    });
+  } catch (error) {
+    return res
+      .status(400)
+      .send('Ocorreu um erro ao tentar atualizar o usuário');
+  }
+};
+
 module.exports = {
   register,
   login,
@@ -124,4 +138,5 @@ module.exports = {
   setPersonalInfo,
   getAllEnabled,
   getAll,
+  setDisabledState,
 };
