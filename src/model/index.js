@@ -13,6 +13,12 @@ const getModel = (url) => {
   if (url.includes('/api/usuario/alterar-desabilitado')) {
     return userModels.setDisabledState;
   }
+  if (url.includes('/api/usuario/alterar-email')) {
+    return userModels.updateEmail;
+  }
+  if (url.includes('/api/usuario/alterar-senha')) {
+    return userModels.updatePassword;
+  }
   if (url.includes('/api/endereco')) {
     return addressModels.createOrUpdateAddress;
   }

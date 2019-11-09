@@ -38,9 +38,28 @@ const setDisabledState = joi.object({
   desabilitado: joi.number().required(),
 });
 
+const updateEmail = joi.object({
+  usuarioId: joi.number().required(),
+  email: joi
+    .string()
+    .min(6)
+    .required()
+    .email(),
+});
+
+const updatePassword = joi.object({
+  usuarioId: joi.number().required(),
+  senha: joi
+    .string()
+    .min(6)
+    .required(),
+});
+
 module.exports = {
   register,
   login,
   setPersonalInfo,
   setDisabledState,
+  updateEmail,
+  updatePassword,
 };

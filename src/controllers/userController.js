@@ -120,7 +120,35 @@ const getAll = async (req, res) => {
 const setDisabledState = async (req, res) => {
   try {
     const repo = new UsuarioRepository((err) => res.status(400).send(err));
-    repo.setDisabledState(req.body.usuarioId, req.body.desabilitado);
+    repo.updateEmail(req.body.usuarioId, req.body.desabilitado);
+    return res.json({
+      ok: true,
+    });
+  } catch (error) {
+    return res
+      .status(400)
+      .send('Ocorreu um erro ao tentar atualizar o usuário');
+  }
+};
+
+const updateEmail = async (req, res) => {
+  try {
+    const repo = new UsuarioRepository((err) => res.status(400).send(err));
+    repo.updateEmail(req.body.usuarioId, req.body.email);
+    return res.json({
+      ok: true,
+    });
+  } catch (error) {
+    return res
+      .status(400)
+      .send('Ocorreu um erro ao tentar atualizar o usuário');
+  }
+};
+
+const updatePassword = async (req, res) => {
+  try {
+    const repo = new UsuarioRepository((err) => res.status(400).send(err));
+    repo.updatePassword(req.body.usuarioId, req.body.senha);
     return res.json({
       ok: true,
     });
@@ -139,4 +167,6 @@ module.exports = {
   getAllEnabled,
   getAll,
   setDisabledState,
+  updateEmail,
+  updatePassword,
 };

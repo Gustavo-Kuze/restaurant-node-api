@@ -256,6 +256,86 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "ALTERAR EMAIL",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usuarioId\": 7,\n\t\"email\": \"joao.bosco@gmail.com\"\n}"
+						},
+						"url": {
+							"raw": "{{HOST}}/api/usuario/alterar-email",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"alterar-email"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ALTERAR SENHA",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\t\"usuarioId\": 7,\n\t\"senha\": \"AKJSDhdkjahsdjadhkjsd231\"\n}"
+						},
+						"url": {
+							"raw": "{{HOST}}/api/usuario/alterar-senha",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"alterar-senha"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}

@@ -91,6 +91,34 @@ const setDisabledState = async (req, res) => {
   }
 };
 
+const updateEmail = async (req, res) => {
+  try {
+    const repo = new ProductRepository((err) => res.status(400).send(err));
+    repo.updateEmail(req.body.produtoId, req.body.email);
+    return res.json({
+      ok: true,
+    });
+  } catch (error) {
+    return res
+      .status(400)
+      .send('Ocorreu um erro ao tentar atualizar o produto');
+  }
+};
+
+const updatePassword = async (req, res) => {
+  try {
+    const repo = new ProductRepository((err) => res.status(400).send(err));
+    repo.updatePassword(req.body.produtoId, req.body.senha);
+    return res.json({
+      ok: true,
+    });
+  } catch (error) {
+    return res
+      .status(400)
+      .send('Ocorreu um erro ao tentar atualizar o produto');
+  }
+};
+
 module.exports = {
   create,
   getById,
@@ -99,4 +127,6 @@ module.exports = {
   getAllEnabled,
   getAll,
   setDisabledState,
+  updateEmail,
+  updatePassword,
 };
