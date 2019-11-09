@@ -8,7 +8,7 @@ const register = async (req, res) => {
     const doesEmailExist = await repo.isEmailRegistered(req.body.email);
 
     if (doesEmailExist) {
-      return res.status(400).send('E-mail already exists');
+      return res.status(400).send('Esse E-mail já esta registrado');
     }
 
     // password hasing
