@@ -95,7 +95,9 @@ class UserRepository extends BaseRepository {
 
   async getAllEnabled() {
     try {
-      const query = 'SELECT * FROM usuario WHERE desabilitado = 0;';
+      const query =
+        // eslint-disable-next-line max-len
+        'SELECT id, id_pessoa, email, tipo_usuario, desabilitado FROM usuario WHERE desabilitado = 0;';
       const result = await this.query(query);
       return result;
     } catch (error) {
@@ -105,7 +107,8 @@ class UserRepository extends BaseRepository {
 
   async getAll() {
     try {
-      const query = 'SELECT * FROM usuario;';
+      const query =
+        'SELECT id, id_pessoa, email, tipo_usuario, desabilitado FROM usuario;';
       const result = await this.query(query);
       return result;
     } catch (error) {
