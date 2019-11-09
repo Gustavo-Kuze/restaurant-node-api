@@ -120,7 +120,7 @@ const getAll = async (req, res) => {
 const setDisabledState = async (req, res) => {
   try {
     const repo = new UsuarioRepository((err) => res.status(400).send(err));
-    repo.updateEmail(req.body.usuarioId, req.body.desabilitado);
+    repo.setDisabledState(req.body.usuarioId, req.body.desabilitado);
     return res.json({
       ok: true,
     });
