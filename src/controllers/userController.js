@@ -91,9 +91,37 @@ const deleteUser = async (req, res) => {
   }
 };
 
+const getAllEnabled = async (req, res) => {
+  try {
+    const repo = new UsuarioRepository((err) => res.status(400).send(err));
+
+    const result = await repo.getAllEnabled();
+
+    return res.json(result);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send(err);
+  }
+};
+
+const getAll = async (req, res) => {
+  try {
+    const repo = new UsuarioRepository((err) => res.status(400).send(err));
+
+    const result = await repo.getAll();
+
+    return res.json(result);
+  } catch (err) {
+    console.log(err);
+    return res.status(400).send(err);
+  }
+};
+
 module.exports = {
   register,
   login,
   deleteUser,
   setPersonalInfo,
+  getAllEnabled,
+  getAll,
 };

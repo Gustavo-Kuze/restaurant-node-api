@@ -144,6 +144,78 @@
 						}
 					},
 					"response": []
+				},
+				{
+					"name": "OBTER HABILITADOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/usuario/obter",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"obter"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "OBTER TODOS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"type": "text",
+								"value": "application/json"
+							}
+						],
+						"url": {
+							"raw": "{{HOST}}/api/usuario/obter-todos",
+							"host": [
+								"{{HOST}}"
+							],
+							"path": [
+								"api",
+								"usuario",
+								"obter-todos"
+							]
+						}
+					},
+					"response": []
 				}
 			],
 			"protocolProfileBehavior": {}

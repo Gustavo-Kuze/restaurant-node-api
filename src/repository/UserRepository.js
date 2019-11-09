@@ -56,6 +56,26 @@ class UserRepository extends BaseRepository {
       return Promise.reject(new Error(error));
     }
   }
+
+  async getAllEnabled() {
+    try {
+      const query = 'SELECT * FROM usuario WHERE desabilitado = 0;';
+      const result = await this.query(query);
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
+
+  async getAll() {
+    try {
+      const query = 'SELECT * FROM usuario;';
+      const result = await this.query(query);
+      return result;
+    } catch (error) {
+      return Promise.reject(new Error(error));
+    }
+  }
 }
 
 module.exports = UserRepository;
