@@ -15,7 +15,7 @@ const createOrUpdatePerson = joi.object({
     .string()
     .min(11)
     .required(),
-  telefone2: joi.string().min(11),
+  telefone2: joi.string().allow(''),
   idEndereco: joi.number().required(),
   estadoCivil: joi.string().required(),
 });
